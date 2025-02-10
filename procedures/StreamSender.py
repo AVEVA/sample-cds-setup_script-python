@@ -68,7 +68,7 @@ def start(
     reader: StreamReader
     for reader in readers:
         if isinstance(reader, BackfillableStreamReader):
-            for data in reader.read_backfill(backfill_start, backfill_end):
+            for data in reader.read_backfill_data(backfill_start, backfill_end):
                 queue.appendleft(data)
 
                 while len(queue) >= max_events:
@@ -77,7 +77,7 @@ def start(
     timer = time.time()
     while True:
         for reader in readers:
-            for data in reader.read_data(datetime.now(timezone.utc)):
+            for data in reader.read_streaming_data(datetime.now(timezone.utc)):
                 queue.appendleft(data)
 
                 while len(queue) >= max_events:

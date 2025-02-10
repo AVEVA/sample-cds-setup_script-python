@@ -44,7 +44,7 @@ class CSVReferenceDataReader(ReferenceDataReader, Generic[T]):
             self.__reference_data_class,
             'CreatedDate',
             units_of_measure=units_of_measure,
-            loop=False,
+            should_loop=False,
         )
 
     def get_authorization_tags(self) -> list[AuthorizationTag]:

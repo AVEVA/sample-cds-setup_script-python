@@ -14,6 +14,7 @@ from data_types import StreamTypeEnum
 
 from ..CSVTransformer import CSVTransformer
 from .BackfillableStreamReader import BackfillableStreamReader
+from .CSVStreamReaderCache import CSVStreamReaderCache
 
 
 class CSVStreamReader(BackfillableStreamReader):
@@ -34,14 +35,17 @@ class CSVStreamReader(BackfillableStreamReader):
                 ]
             )
         )
-
-        self.__reader = CSVTransformer(
-            self.__file_path, self.__data_class, self.__index_property
+        self.__csv_transformer = CSVTransformer(self.__data_class)
+        self.__streaming_data_cache = CSVStreamReaderCache(
+            self.__file_path, self.__csv_transformer, self.__index_property
+        )
+        self.__backfill_data_cache = CSVStreamReaderCache(
+            self.__file_path, self.__csv_transformer, self.__index_property
         )
 
         self.__current_value = None
         self.__current_value_time = None
-        self.__start_time_csv = self.__reader.get_data_start()
+        self.__start_time_csv = self.__backfill_data_cache.get_data_start()
 
     def get_stream(self) -> OMFContainer:
         return OMFContainer(self.id, self.__omf_type.Id, self.name)
@@ -50,14 +54,14 @@ class CSVStreamReader(BackfillableStreamReader):
         return self.__omf_type
 
     def __get_values(
-        self, start_time: datetime, end_time: datetime
+        self, reader_cache: CSVStreamReaderCache, start_time: datetime, end_time: datetime
     ) -> Iterator[(datetime, OMFData)]:
-        if not self.__reader.offset:
-            self.__reader.offset = start_time - self.__start_time_csv
+        if not reader_cache.offset:
+            reader_cache.offset = start_time - self.__start_time_csv
 
         last_time = start_time
         while end_time > last_time:
-            next_data = next(self.__reader, None)
+            next_data = next(reader_cache, None)
             value = self.__data_class(**next_data)
             last_time = getattr(value, self.__index_property)
 
@@ -71,20 +75,20 @@ class CSVStreamReader(BackfillableStreamReader):
 
             self.__current_value = value
 
-    def read_data(self, now: datetime) -> Iterator[OMFData]:
+    def read_streaming_data(self, now: datetime) -> Iterator[OMFData]:
         if not self.__current_value_time:
             self.__current_value_time = getattr(self.__current_value, self.__index_property)
 
-        for last_time, value in self.__get_values(self.__current_value_time, now):
+        for last_time, value in self.__get_values(self.__streaming_data_cache, self.__current_value_time, now):
             self.__current_value_time = last_time
             for observer in self.observers:
                 observer(value)
             yield value
 
-    def read_backfill(
+    def read_backfill_data(
         self, start_time: datetime, end_time: datetime
     ) -> Iterator[OMFData]:
-        for _, value in self.__get_values(start_time, end_time):
+        for _, value in self.__get_values(self.__backfill_data_cache, start_time, end_time):
             for observer in self.observers:
                 observer(value)
             yield value

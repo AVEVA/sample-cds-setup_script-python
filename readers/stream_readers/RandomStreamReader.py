@@ -51,7 +51,7 @@ class RandomStreamReader(BackfillableStreamReader):
             last_time += interval
             yield last_time, self.__get_next_value(last_time)
 
-    def read_data(self, now: datetime) -> Iterator[OMFData]:
+    def read_streaming_data(self, now: datetime) -> Iterator[OMFData]:
         if not self.__last_data_time:
             self.__last_data_time = now
 
@@ -61,7 +61,7 @@ class RandomStreamReader(BackfillableStreamReader):
             self.__last_data_time = last_time
             yield value
 
-    def read_backfill(
+    def read_backfill_data(
         self, start_time: datetime, end_time: datetime
     ) -> Iterator[OMFData]:
         for _, value in self.__get_values(start_time, end_time, self.__interval):
