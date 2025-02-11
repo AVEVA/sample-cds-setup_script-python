@@ -76,8 +76,9 @@ class CSVStreamReader(BackfillableStreamReader):
             self.__current_value = value
 
     def read_streaming_data(self, now: datetime) -> Iterator[OMFData]:
+        now = now.replace(microsecond=0)
         if not self.__current_value_time:
-            self.__current_value_time = getattr(self.__current_value, self.__index_property)
+            self.__current_value_time = self.__streaming_data_cache.seek_to_first_event_prior_to(now)
 
         for last_time, value in self.__get_values(self.__streaming_data_cache, self.__current_value_time, now):
             self.__current_value_time = last_time
@@ -85,10 +86,14 @@ class CSVStreamReader(BackfillableStreamReader):
                 observer(value)
             yield value
 
-    def read_backfill_data(
-        self, start_time: datetime, end_time: datetime
-    ) -> Iterator[OMFData]:
-        for _, value in self.__get_values(self.__backfill_data_cache, start_time, end_time):
+    def read_backfill_data(self, start_time: datetime, end_time: datetime) -> Iterator[OMFData]:
+        start_time = start_time.replace(microsecond=0)
+        end_time = end_time.replace(microsecond=0)
+
+        if not self.__current_value_time:
+            self.__current_value_time = self.__backfill_data_cache.seek_to_first_event_prior_to(start_time)
+
+        for _, value in self.__get_values(self.__backfill_data_cache, self.__current_value_time, end_time):
             for observer in self.observers:
                 observer(value)
             yield value
