@@ -61,9 +61,6 @@ class CSVStreamReader(BackfillableStreamReader):
     def __get_values(
         self, stream_data_iterator: CSVStreamDataIterator, start_time: datetime, end_time: datetime
     ) -> Iterator[(datetime, OMFData)]:
-        if not stream_data_iterator.offset:
-            stream_data_iterator.offset = start_time - self.__start_time_csv
-
         last_time = start_time
         while end_time > last_time:
             next_data = next(stream_data_iterator, None)
@@ -95,8 +92,7 @@ class CSVStreamReader(BackfillableStreamReader):
         start_time = start_time.replace(microsecond=0)
         end_time = end_time.replace(microsecond=0)
 
-        if not self.__current_value_time:
-            self.__current_value_time = self.__backfill_data_iterator.seek_to_first_event_prior_to(start_time)
+        self.__current_value_time = self.__backfill_data_iterator.seek_to_first_event_prior_to(start_time)
 
         for _, value in self.__get_values(self.__backfill_data_iterator, self.__current_value_time, end_time):
             for observer in self.observers:

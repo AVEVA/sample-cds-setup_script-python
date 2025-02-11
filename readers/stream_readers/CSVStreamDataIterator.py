@@ -24,11 +24,11 @@ class CSVStreamDataIterator:
         self.__datetime_fields = set()
         self.__should_loop = should_loop
         self.__index_field = index_field
-        self.__file_data_start = None
+        self.__data_file_first_timestamp = None
         self.__file_data_end = None
         self.__time_offset_to_now = None
         self.__populate_cache()
-        self.__file_data_start = (
+        self.__data_file_first_timestamp = (
             self.__cache[0].get(self.__index_field) if index_field and not (global_settings.application_mode is global_settings.ApplicationMode.Setup
         or global_settings.application_mode is global_settings.ApplicationMode.Cleanup) else None
         )
@@ -38,15 +38,11 @@ class CSVStreamDataIterator:
         return self
 
     def get_data_start(self):
-        return self.__file_data_start
+        return self.__data_file_first_timestamp
 
     @property
     def offset(self):
         return self.__time_offset_to_now
-
-    @offset.setter
-    def offset(self, value: timedelta):
-        self.__time_offset_to_now = value
 
     def __populate_cache(self, target_index = None):
         if (global_settings.application_mode is global_settings.ApplicationMode.Setup
@@ -74,7 +70,7 @@ class CSVStreamDataIterator:
                 # We reached the end of the file and are configured to loop.  Reset the file index to 0, update the time offset 
                 # and start reading again from the beginning of the file
                 self.__file_data_index = 0
-                self.__time_offset_to_now += self.__calculate_data_set_duration()
+                self.__time_offset_to_now += self.__calculate_data_file_duration()
                 self.__populate_cache()
 
         if self.__cache_index < len(self.__cache):
@@ -107,46 +103,54 @@ class CSVStreamDataIterator:
     # we can calculate where in the dataset we should start reading from for any given time
     def seek_to_first_event_prior_to(self, start_time: datetime):
         # calculate expected time offset in the dataset
-        target_time_offset_in_dataset = self.__calculate_target_time_offset_in_dataset(start_time)
+        target_time_offset_in_data_file = self.__calculate_target_time_offset_in_dataset(start_time)
 
-        target_dataset_index = 0
-        dataset_time_offset_from_target = timedelta(seconds=0)
-        dataset_first_event_timestamp = self.get_data_start()
-        current_timestamp = dataset_first_event_timestamp
+        data_file_target_index = 0
+        data_file_time_offset_from_target = timedelta(seconds=0)
+        data_file_first_event_timestamp = self.get_data_start()
+        current_timestamp = data_file_first_event_timestamp
 
         # iterate until we are past the target time offset, and remember the index immediately before
-        while (current_timestamp - dataset_first_event_timestamp) < target_time_offset_in_dataset:
+        while (current_timestamp - data_file_first_event_timestamp) < target_time_offset_in_data_file:
             current_timestamp = self.__next__().get(self.__index_field)
-            if (current_timestamp - dataset_first_event_timestamp) < target_time_offset_in_dataset:
-                dataset_time_offset_from_target = current_timestamp - dataset_first_event_timestamp
-                target_dataset_index += 1
-
-        # set the iterator state to the index we found in the dataset and make sure time offset is set
-        self.__set_iterator_cache(target_dataset_index)
-        self.__time_offset_to_now = start_time - self.__file_data_start
+            if (current_timestamp - data_file_first_event_timestamp) < target_time_offset_in_data_file:
+                data_file_time_offset_from_target = current_timestamp - data_file_first_event_timestamp
+                data_file_target_index += 1
 
         # calculate the full timestamp of event just prior to stepping over the target offset and return
-        return self.calculate_previous_value_timestamp(
-            dataset_duration = self.__calculate_data_set_duration(), 
-            dataset_loops = self.__calculate_expected_dataset_loops(start_time), 
-            dataset_time_offset = dataset_time_offset_from_target
+        previous_value_timestamp = self.calculate_previous_value_timestamp(
+            data_file_duration = self.__calculate_data_file_duration(), 
+            data_file_loops = self.__calculate_expected_data_file_loops(start_time), 
+            data_file_time_offset = data_file_time_offset_from_target
         )
+
+        # set the iterator state to the index we found in the dataset
+        self.__set_iterator_cache(data_file_target_index)
+
+        # the time offsets are updated on each cache update, so the offset must be set to the beginning of the
+        # cache that we are now in the middle of
+        self.__time_offset_to_now = self.__calculate_cache_time_offset(data_file_first_event_timestamp, start_time)
+
+        return previous_value_timestamp
     
-    def calculate_previous_value_timestamp(self, dataset_duration: timedelta, dataset_loops: int, dataset_time_offset: timedelta) -> datetime:
-        return self.epoch_zero_utc() + (dataset_duration * dataset_loops) + dataset_time_offset
+    def calculate_previous_value_timestamp(self, data_file_duration: timedelta, data_file_loops: int, data_file_time_offset: timedelta) -> datetime:
+        return self.epoch_zero_utc() + (data_file_duration * data_file_loops) + data_file_time_offset
     
+    def __calculate_cache_time_offset(self, data_file_first_event_timestamp: datetime, start_time: datetime) -> timedelta:
+        return (self.__calculate_data_file_duration() * self.__calculate_expected_data_file_loops(start_time)) - (data_file_first_event_timestamp - self.epoch_zero_utc())
+
     # Use modulo to calculate the target offset in dataset we would be at had we started
     # writing data at epoch zero
     def __calculate_target_time_offset_in_dataset(self, start_time: datetime) -> timedelta:
-        return (start_time - self.epoch_zero_utc()) % (self.__calculate_data_set_duration())
+        return (start_time - self.epoch_zero_utc()) % (self.__calculate_data_file_duration())
     
     # Use "integer" division to calculate the total number of times the dataset would have 
     # looped between epoch zero and starttime
-    def __calculate_expected_dataset_loops(self, start_time: datetime) -> int:
-        return (start_time - self.epoch_zero_utc()) // (self.__calculate_data_set_duration())
+    def __calculate_expected_data_file_loops(self, start_time: datetime) -> int:
+        return (start_time - self.epoch_zero_utc()) // (self.__calculate_data_file_duration())
 
-    def __calculate_data_set_duration(self) -> timedelta:
-        return self.__file_data_end - self.__file_data_start
+    def __calculate_data_file_duration(self) -> timedelta:
+        return self.__file_data_end - self.__data_file_first_timestamp
     
     def epoch_zero_utc(self) -> datetime:
         return datetime.fromtimestamp(0, timezone.utc)
