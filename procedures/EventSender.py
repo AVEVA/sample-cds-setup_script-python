@@ -66,7 +66,7 @@ def start(
     reader: EventReader
     for reader in readers:
         if isinstance(reader, BackfillableEventReader):
-            for data in reader.read_backfill(backfill_start, backfill_end):
+            for data in reader.read_backfill_events(backfill_start, backfill_end):
                 queue.appendleft(data)
 
                 while len(queue) >= max_events:
@@ -77,7 +77,7 @@ def start(
     timer = time.time()
     while True:
         for reader in readers:
-            for data in reader.read_events(datetime.now(timezone.utc)):
+            for data in reader.read_streaming_events(datetime.now(timezone.utc)):
                 queue.appendleft(data)
 
                 while len(queue) >= max_events:

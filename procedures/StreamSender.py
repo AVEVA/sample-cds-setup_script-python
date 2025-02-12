@@ -66,18 +66,23 @@ def start(
 
     queue = deque(maxlen=max_queue_length)
     reader: StreamReader
-    for reader in readers:
-        if isinstance(reader, BackfillableStreamReader):
-            for data in reader.read_backfill_data(backfill_start, backfill_end):
-                queue.appendleft(data)
+    if False:
+        for reader in readers:
+            if isinstance(reader, BackfillableStreamReader):
+                for data in reader.read_backfill_data(backfill_start, backfill_end):
+                    queue.appendleft(data)
 
-                while len(queue) >= max_events:
-                    _send(omf_clients, queue, max_events, event_rate_counter)
+                    while len(queue) >= max_events:
+                        _send(omf_clients, queue, max_events, event_rate_counter)
+
+        _send(omf_clients, queue, max_events, event_rate_counter)
 
     timer = time.time()
     while True:
         for reader in readers:
-            for data in reader.read_streaming_data(datetime.now(timezone.utc)):
+            #now = datetime.fromisoformat('2025-02-12T12:00:00Z')
+            now = datetime.now(timezone.utc)
+            for data in reader.read_streaming_data(now):
                 queue.appendleft(data)
 
                 while len(queue) >= max_events:

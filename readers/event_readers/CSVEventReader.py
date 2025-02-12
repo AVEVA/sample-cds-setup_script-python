@@ -14,6 +14,7 @@ from adh_sample_library_preview import (
 from data_types import EventTypeEnum, AuthorizationTagEnum, EnumEnum
 
 from ..CSVTransformer import CSVTransformer
+from ..CSVIterator import CSVIterator
 from ..GraphData import GraphData
 from .BackfillableEventReader import BackfillableEventReader
 
@@ -40,17 +41,23 @@ class CSVEventReader(BackfillableEventReader, Generic[T]):
         self.__enumerations = enumerations if enumerations else []
         self.__file_path = file_path
         self.__units_of_measure = units_of_measure
-        self.__reader = CSVTransformer(
-            file_path,
+        self.__transformer = CSVTransformer(
             self.__event_class,
-            'StartTime',
             units_of_measure=units_of_measure,
+        )
+        self.__streaming_event_iterator = CSVIterator(
+            file_path,
+            self.__transformer,
+            'StartTime',
+        )
+        self.__backfill_event_iterator = CSVIterator(
+            file_path,
+            self.__transformer,
+            'StartTime',
         )
 
         self.__open_events = []
         self.__current_event = None
-        self.__current_event_time = None
-        self.__start_time_csv = self.__reader.get_data_start()
 
     def get_authorization_tags(self) -> list[AuthorizationTag]:
         return self.__authorization_tags
@@ -62,14 +69,11 @@ class CSVEventReader(BackfillableEventReader, Generic[T]):
         return self.__event_type
 
     def __get_events(
-        self, start_time: datetime, end_time: datetime
-    ) -> Iterator[(datetime, T)]:
-        if not self.__reader.offset:
-            self.__reader.offset = start_time - self.__start_time_csv
-
+        self, event_iterator: CSVIterator, start_time: datetime, end_time: datetime
+    ) -> Iterator[T]:
         last_time = start_time
         while end_time > last_time:
-            next_event = next(self.__reader, None)
+            next_event = next(event_iterator, None)
             next_event: BaseEvent = self.__event_class(**next_event)
             last_time = next_event.StartTime
 
@@ -87,30 +91,34 @@ class CSVEventReader(BackfillableEventReader, Generic[T]):
                 event.Name = str(uuid.uuid4())
 
             if event.EndTime < end_time:
-                yield (last_time, event)
+                yield event
                 self.__open_events.remove(event)
             else:
-                yield (
-                    last_time,
-                    BaseEvent(
+                yield BaseEvent(
                         Id=event.Id,
                         Name=event.Name,
-                        StartTime=event.StartTime,
-                    ),
-                )
+                        StartTime=event.StartTime)
 
-    def read_events(self, now: datetime) -> Iterator[GraphData[T]]:
-        if not self.__current_event_time:
-            self.__current_event_time = now
+    def read_streaming_events(self, now: datetime) -> Iterator[GraphData[T]]:
+        # trim subseconds off of input datetimes for clarity
+        now = now.replace(microsecond=0)
+        if not self.__streaming_event_iterator.current_value_time:
+            current_value_time = self.__streaming_event_iterator.seek_to_first_event_prior_to(now)
+        else:
+            current_value_time = self.__streaming_event_iterator.current_value_time
 
-        for last_time, value in self.__get_events(self.__current_event_time, now):
-            self.__current_event_time = last_time
+        for value in self.__get_events(self.__streaming_event_iterator, current_value_time, now):
             yield GraphData([value], self.__event_type.Id)
 
-    def read_backfill(
+    def read_backfill_events(
         self, start_time: datetime, end_time: datetime
     ) -> Iterator[GraphData[T]]:
-        for _, value in self.__get_events(start_time, end_time):
+        # trim subseconds off of input datetimes for clarity
+        start_time = start_time.replace(microsecond=0)
+        end_time = end_time.replace(microsecond=0)
+
+        current_value_time = self.__backfill_event_iterator.seek_to_first_event_prior_to(start_time)
+        for value in self.__get_events(self.__backfill_event_iterator, current_value_time, end_time):
             yield GraphData([value], self.__event_type.Id)
 
     @staticmethod

@@ -69,7 +69,7 @@ class EventReader(ABC):
         pass
 
     @abstractmethod
-    def read_events(self, now: datetime) -> Iterator[GraphData[BaseEvent]]:
+    def read_streaming_events(self, now: datetime) -> Iterator[GraphData[BaseEvent]]:
         pass
 
     @staticmethod

@@ -37,7 +37,8 @@ class CSVIterator:
             self.__cache[0].get(self.__index_field) if index_field and not (global_settings.application_mode is global_settings.ApplicationMode.Setup
         or global_settings.application_mode is global_settings.ApplicationMode.Cleanup) else None
         )
-        self.__file_data_end, self.__file_data_last_time_difference, self.__file_data_number_of_rows = self.__get_file_data_details()
+        if self.__should_loop:
+            self.__file_data_end, self.__file_data_last_time_difference, self.__file_data_number_of_rows = self.__get_file_data_details()
 
     def __iter__(self):
         return self
