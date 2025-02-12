@@ -61,7 +61,7 @@ max_threads_per_reference_data_process = 1
 
 # Default Read Settings
 default_read_interval = timedelta(seconds=5)
-default_backfill_duration = timedelta(hours=8)
+default_backfill_duration = timedelta(days=1)
 
 
 
