@@ -77,9 +77,7 @@ def start(
     timer = time.time()
     while True:
         for reader in readers:
-            #now = datetime.fromisoformat('2025-02-12T12:00:00Z')
-            now = datetime.now(timezone.utc)
-            for data in reader.read_streaming_data(now):
+            for data in reader.read_streaming_data(datetime.now(timezone.utc)):
                 queue.appendleft(data)
 
                 while len(queue) >= max_events:
