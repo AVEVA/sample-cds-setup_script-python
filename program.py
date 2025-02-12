@@ -785,13 +785,13 @@ def cleanup(appsettings: AppSettings): #TODO parrallize this to delete each at t
             CleanupProcedures.deleteRoles(adh_client, custom_roles)
 
         if Resource.OMFConnection in resources:
-            print('Deleteing OMF Connection')
+            print('Deleting OMF Connection')
             CleanupProcedures.deleteOMFConnection(
                 adh_client, namespace_id, labels.OMFConnectionName
             )
 
         if Resource.Client in resources:
-            print('Deleteing Client Credentials Client')
+            print('Deleting Client Credentials Client')
             CleanupProcedures.deleteClient(adh_client, labels.ClientName)
 
             print('Removing Run Client from Appsetting')
