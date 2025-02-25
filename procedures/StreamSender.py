@@ -2,7 +2,6 @@ import time
 from collections import deque
 from datetime import datetime, timedelta, timezone
 
-from omf_sample_library_preview.Client import OMFClient
 from omf_sample_library_preview.Models import OMFData
 from omf_sample_library_preview.Services import DataService
 
@@ -39,6 +38,61 @@ def _send(
         data_service = DataService(client)
         data_service.updateData(payload)
 
+def __backfill_stream_data(
+    omf_clients: ADHOMFClients, 
+    readers: StreamReader, 
+    queue: deque, 
+    backfill_start: datetime, 
+    backfill_end: datetime, 
+    max_events: int, 
+    event_rate_counter: EventRateCounter
+):
+    reader: StreamReader
+    for reader in readers:
+        if isinstance(reader, BackfillableStreamReader):
+            for data in reader.read_backfill_data(backfill_start, backfill_end):
+                queue.appendleft(data)
+
+                while len(queue) >= max_events:
+                    _send(omf_clients, queue, max_events, event_rate_counter)
+
+def __stream_stream_data(
+    omf_clients: ADHOMFClients, 
+    readers: StreamReader, 
+    queue: deque, 
+    backfill_end: datetime, 
+    max_events: int, 
+    read_interval: timedelta, 
+    send_period: int, 
+    event_rate_counter: EventRateCounter
+):
+    reader: StreamReader
+    timer = time.time()
+
+    # start at the backfill_end to ensure no gaps
+    for reader in readers:
+        for data in reader.read_streaming_data(backfill_end):
+            queue.appendleft(data)
+
+    while True:
+        for reader in readers:
+            for data in reader.read_streaming_data(datetime.now(timezone.utc)):
+                queue.appendleft(data)
+
+                while len(queue) >= max_events:
+                    _send(omf_clients, queue, max_events, event_rate_counter)
+                    timer = time.time()
+
+        if time.time() - timer > send_period:
+            try:
+                _send(omf_clients, queue, max_events, event_rate_counter)
+            except Exception as error:
+                print(error)            
+                
+            timer = time.time()
+
+        time.sleep(read_interval.total_seconds())
+
 
 def start(
     omf_clients: ADHOMFClients,
@@ -65,31 +119,5 @@ def start(
     """   
 
     queue = deque(maxlen=max_queue_length)
-    reader: StreamReader
-    for reader in readers:
-        if isinstance(reader, BackfillableStreamReader):
-            for data in reader.read_backfill_data(backfill_start, backfill_end):
-                queue.appendleft(data)
-
-                while len(queue) >= max_events:
-                    _send(omf_clients, queue, max_events, event_rate_counter)
-
-    timer = time.time()
-    while True:
-        for reader in readers:
-            for data in reader.read_streaming_data(datetime.now(timezone.utc)):
-                queue.appendleft(data)
-
-                while len(queue) >= max_events:
-                    _send(omf_clients, queue, max_events, event_rate_counter)
-                    timer = time.time()
-
-        if time.time() - timer > send_period:
-            try:
-                _send(omf_clients, queue, max_events, event_rate_counter)
-            except Exception as error:
-                print(error)            
-                
-            timer = time.time()
-
-        time.sleep(read_interval.total_seconds())
+    __backfill_stream_data(omf_clients, readers, queue, backfill_start, backfill_end, max_events, event_rate_counter)
+    __stream_stream_data(omf_clients, readers, queue, backfill_end, max_events, read_interval, send_period, event_rate_counter)
