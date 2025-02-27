@@ -2,6 +2,7 @@ import copy
 import csv
 import itertools
 from datetime import timedelta, datetime, timezone
+from itertools import islice
 
 from .CSVTransformer import CSVTransformer
 import global_settings
@@ -14,6 +15,8 @@ class CSVIterator:
         index_field: str = None,
         max_cache_size: int = 1000,
         should_loop=True,
+        file_data_number_of_rows=None,
+        file_data_end=None
     ):
         # data file settings and state
         self.__data_file_path = data_file_path
@@ -23,9 +26,8 @@ class CSVIterator:
         self.__should_loop = should_loop
         self.__file_data_index = 0
         self.__file_data_first_timestamp = None
-        self.__file_data_end = None
-        self.__file_data_last_time_difference = None
-        self.__file_data_number_of_rows = None
+        self.__file_data_end = file_data_end
+        self.__file_data_number_of_rows = file_data_number_of_rows
         self.__current_row = None
         # cache settings and state
         self.__cache = []
@@ -37,15 +39,21 @@ class CSVIterator:
             self.__cache[0].get(self.__index_field) if index_field and not (global_settings.application_mode is global_settings.ApplicationMode.Setup
         or global_settings.application_mode is global_settings.ApplicationMode.Cleanup) else None
         )
-        if self.__should_loop:
-            self.__file_data_end, self.__file_data_last_time_difference, self.__file_data_number_of_rows = self.__get_file_data_details()
+        if self.__should_loop and (self.__file_data_end == None and self.__file_data_number_of_rows == None):
+            self.__file_data_end, self.__file_data_number_of_rows = self.__get_file_data_details()
 
     def __iter__(self):
         return self
     
     def get_data_start(self):
         return self.__file_data_first_timestamp
-       
+    
+    def get_file_data_end(self):
+        return self.__file_data_end
+    
+    def get_file_data_number_of_rows(self):
+        return self.__file_data_number_of_rows
+          
     @property
     def current_value_time(self):
         return self.__current_row.get(self.__index_field) if self.__current_row is not None else None
@@ -90,7 +98,7 @@ class CSVIterator:
             return row_copy
         else:
             raise StopIteration
-    
+        
     # in order to properly calculate file data time duration and other edge cases, we need to know
     # the last event timestamp in the file, as well as the difference between the last two timestamps
     # in the file. (this is used as the time difference between the "loop")
@@ -100,19 +108,18 @@ class CSVIterator:
     def __get_file_data_details(self):
         if self.__file_data_end is None:
             self.__file_data_number_of_rows = 0
+            
+            # iterate through file quickly to find number of rows and the last row
             with open(self.__data_file_path, newline='') as file:
                 reader = csv.DictReader(file)
-                previous_line, _ = self.__transformer.transform_row(next(reader))
-                self.__file_data_number_of_rows += 1
                 for row in reader:
-                    current_line, _ = self.__transformer.transform_row(row)
-                    self.__file_data_last_time_difference = current_line.get(self.__index_field) - previous_line.get(self.__index_field)
-                    previous_line = current_line
                     self.__file_data_number_of_rows += 1
+                
+                last_row, _ = self.__transformer.transform_row(row)
+                self.__file_data_end = last_row.get(self.__index_field)
 
-            self.__file_data_end = current_line.get(self.__index_field)
-            return self.__file_data_end, self.__file_data_last_time_difference, self.__file_data_number_of_rows
-        
+            return self.__file_data_end, self.__file_data_number_of_rows
+               
     def __apply_time_offset_to_datetime_fields(self, row):
         if not row:
             return None
@@ -137,9 +144,10 @@ class CSVIterator:
         # edge case, but it is possible that we line up with the very first event in the file, in which case
         # we need to reset back to the last event in the file on the previous loop
         if target_time_offset_in_data_file == timedelta():
+            last_two_rows_time_difference = self.__get_last_two_rows_time_difference()
             data_file_target_index = self.__file_data_number_of_rows - 1
-            start_time = start_time - self.__file_data_last_time_difference
-            data_file_time_offset_to_target = data_file_time_offset_to_target - self.__file_data_last_time_difference
+            start_time = start_time - last_two_rows_time_difference
+            data_file_time_offset_to_target = data_file_time_offset_to_target - last_two_rows_time_difference
             
         else:
             # iterate until we pass the target time offset, and remember the index immediately before
@@ -194,3 +202,10 @@ class CSVIterator:
         self.__file_data_index = target_row_index
         self.__populate_cache(target_row_index)
         self.__cache_index = 0
+
+    def __get_last_two_rows_time_difference(self):
+        with open(self.__data_file_path, newline='') as file:
+            reader = csv.DictReader(file)
+            last_two_rows_iterator = islice(reader, self.__file_data_number_of_rows - 2, None, None)
+            second_to_last_row, _ = self.__transformer.transform_row(next(last_two_rows_iterator))
+            return self.__file_data_end - second_to_last_row.get(self.__index_field)

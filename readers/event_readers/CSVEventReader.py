@@ -46,14 +46,16 @@ class CSVEventReader(BackfillableEventReader, Generic[T]):
             units_of_measure=units_of_measure,
         )
         self.__streaming_event_iterator = CSVIterator(
-            file_path,
-            self.__transformer,
-            'StartTime',
+            data_file_path = file_path,
+            transformer = self.__transformer,
+            index_field = 'StartTime',
         )
         self.__backfill_event_iterator = CSVIterator(
-            file_path,
-            self.__transformer,
-            'StartTime',
+            data_file_path = file_path,
+            transformer = self.__transformer,
+            index_field = 'StartTime',
+            file_data_number_of_rows = self.__streaming_event_iterator.get_file_data_number_of_rows(),
+            file_data_end = self.__streaming_event_iterator.get_file_data_end()
         )
 
         self.__open_events = []

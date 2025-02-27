@@ -42,10 +42,16 @@ class CSVStreamReader(BackfillableStreamReader):
         # in the future can implement these as an array of iterators where [0] is streaming 
         # and the rest can be pooled for parallel backfill tasks
         self.__streaming_data_iterator = CSVIterator(
-            self.__file_path, self.__csv_transformer, self.__index_property
+            data_file_path = self.__file_path, 
+            transformer = self.__csv_transformer, 
+            index_field = self.__index_property
         )
         self.__backfill_data_iterator = CSVIterator(
-            self.__file_path, self.__csv_transformer, self.__index_property
+            data_file_path = self.__file_path, 
+            transformer = self.__csv_transformer, 
+            index_field = self.__index_property, 
+            file_data_number_of_rows = self.__streaming_data_iterator.get_file_data_number_of_rows(), 
+            file_data_end = self.__streaming_data_iterator.get_file_data_end()
         )
 
     def get_stream(self) -> OMFContainer:
