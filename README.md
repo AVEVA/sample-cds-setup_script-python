@@ -77,7 +77,7 @@ If multiple instances of this application are being run in the same AVEVA CONNEC
 
 ### Data Configuration
 
-Data configurations contain the defintion of what resources to create and what data to send. This is done by specifying a heirarchy of Assets, associated resources like Asset Types, and optional stadalone resources that are not tied to the heirarchy. There are two data configurations included with this sample, which are documented in the table below.
+Data configurations contain the defintion of what resources to create and what data to send. This is done by specifying a heirarchy of Assets, associated resources like Asset Types, and optional stadalone resources that are not tied to the heirarchy. The data configurations included with this sample are described in the table below.
 
 | Data Configuration | Relative Path                          | Description                                                                                                                                 |
 | ------------------ | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
