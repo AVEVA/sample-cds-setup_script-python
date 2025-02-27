@@ -99,12 +99,12 @@ class CSVIterator:
         else:
             raise StopIteration
         
-    # in order to properly calculate file data time duration and other edge cases, we need to know
-    # the last event timestamp in the file, as well as the difference between the last two timestamps
-    # in the file. (this is used as the time difference between the "loop")
+    # in order to properly calculate where in the data file we need to start iterating, as well as edge cases 
+    # such as needing to start at the first event in the file, we need to get the last event timestamp in the file, 
+    # as well as the total number of data rows in the file. This must be done for each dataset .csv file and can take
+    # some time for large datasets (1000+ files)
     #   1. The timestamp of the last event in the file
-    #   2. The difference between the last two timestamps in the file
-    #   3. The total number of rows in the data file
+    #   2. The total number of rows in the data file
     def __get_file_data_details(self):
         if self.__file_data_end is None:
             self.__file_data_number_of_rows = 0
