@@ -79,10 +79,11 @@ If multiple instances of this application are being run in the same AVEVA CONNEC
 
 Data configurations contain the defintion of what resources to create and what data to send. This is done by specifying a heirarchy of Assets, associated resources like Asset Types, and optional stadalone resources that are not tied to the heirarchy. There are two data configurations included with this sample, which are documented in the table below.
 
-| Data Configuration | Relative Path                          | Description                                                                                                                      |
-| ------------------ | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| test               | data\test\data_configuration.json      | Test data set to verify that sample is working                                                                                   |
-| windtopia          | data\windtopia\data_configuration.json | Windtopia wind turbine data set<br>Contains the Windtopia organization with 10 wind turbine Assets spread out across three sites |
+| Data Configuration | Relative Path                          | Description                                                                                                                                 |
+| ------------------ | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| test               | data\test\data_configuration.json      | Test data set to verify that sample is working                                                                                              |
+| gentovo            | data\gentovo\data_configuration.json   | Gentovo energy drink plant data set<br>Contains the fictitious Gentovo energy drink plant data created by TwinThread                        |
+| windtopia          | data\windtopia\data_configuration.json | Windtopia wind turbine data set<br>Contains the fictitious Windtopia organization with 10 wind turbine Assets spread out across three sites |
 
 
 
