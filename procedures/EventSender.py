@@ -36,6 +36,63 @@ def _send(
         for index,adh_client in enumerate(adh_clients):
             adh_client.Events.getOrCreateEvents(namespace_ids[index], type_id, events)
 
+def __backfill_event_data(
+    adh_clients: list[ADHClient], 
+    namespace_ids: list[str], 
+    readers: EventReader, 
+    queue: deque, 
+    backfill_start: datetime, 
+    backfill_end: datetime, 
+    max_events: int, 
+    event_rate_counter: EventRateCounter
+):
+    reader: EventReader
+    for reader in readers:
+        if isinstance(reader, BackfillableEventReader):
+            for data in reader.read_backfill_events(backfill_start, backfill_end):
+                queue.appendleft(data)
+
+                while len(queue) >= max_events:
+                    _send(
+                        adh_clients, namespace_ids, queue, max_events, event_rate_counter
+                    )
+
+def __stream_event_data(
+    adh_clients: list[ADHClient], 
+    namespace_ids: list[str], 
+    readers: EventReader, 
+    queue: deque, 
+    backfill_end: datetime, 
+    max_events: int, 
+    read_interval: timedelta, 
+    send_period: int, 
+    event_rate_counter: EventRateCounter
+):
+    reader: EventReader
+    timer = time.time()
+
+    # start at the backfill_end to ensure no gaps
+    for reader in readers:
+        for data in reader.read_streaming_events(backfill_end):
+            queue.appendleft(data)
+
+    while True:
+        for reader in readers:
+            for data in reader.read_streaming_events(datetime.now(timezone.utc)):
+                queue.appendleft(data)
+
+                while len(queue) >= max_events:
+                    _send(
+                        adh_clients, namespace_ids, queue, max_events, event_rate_counter
+                    )
+                    timer = time.time()
+
+        if time.time() - timer > send_period:
+            _send(adh_clients, namespace_ids, queue, max_events, event_rate_counter)
+            timer = time.time()
+
+        time.sleep(read_interval.total_seconds())
+
 
 def start(
     adh_clients: list[ADHClient],
@@ -63,31 +120,5 @@ def start(
     :param max_queue_length: maximum queue length
     """
     queue = deque(maxlen=max_queue_length)
-    reader: EventReader
-    for reader in readers:
-        if isinstance(reader, BackfillableEventReader):
-            for data in reader.read_backfill(backfill_start, backfill_end):
-                queue.appendleft(data)
-
-                while len(queue) >= max_events:
-                    _send(
-                        adh_clients, namespace_ids, queue, max_events, event_rate_counter
-                    )
-
-    timer = time.time()
-    while True:
-        for reader in readers:
-            for data in reader.read_events(datetime.now(timezone.utc)):
-                queue.appendleft(data)
-
-                while len(queue) >= max_events:
-                    _send(
-                        adh_clients, namespace_ids, queue, max_events, event_rate_counter
-                    )
-                    timer = time.time()
-
-        if time.time() - timer > send_period:
-            _send(adh_clients, namespace_ids, queue, max_events, event_rate_counter)
-            timer = time.time()
-
-        time.sleep(read_interval.total_seconds())
+    __backfill_event_data(adh_clients, namespace_ids, readers, queue, backfill_start, backfill_end, max_events, event_rate_counter)
+    __stream_event_data(adh_clients, namespace_ids, readers, queue, backfill_end, max_events, read_interval, send_period, event_rate_counter)

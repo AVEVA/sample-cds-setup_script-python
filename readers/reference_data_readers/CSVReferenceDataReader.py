@@ -14,6 +14,7 @@ from adh_sample_library_preview import (
 from data_types import AuthorizationTagEnum, EnumEnum, ReferenceDataTypeEnum
 
 from ..CSVTransformer import CSVTransformer
+from ..CSVIterator import CSVIterator
 from ..GraphData import GraphData
 from .ReferenceDataReader import ReferenceDataReader
 
@@ -39,12 +40,15 @@ class CSVReferenceDataReader(ReferenceDataReader, Generic[T]):
         self.__enumerations = enumerations if enumerations else []
         self.__file_path = file_path
         self.__units_of_measure = units_of_measure
-        self.__reader = CSVTransformer(
-            file_path,
+        self.__transformer = CSVTransformer(
             self.__reference_data_class,
+            units_of_measure=units_of_measure
+        )
+        self.__iterator = CSVIterator(
+            file_path,
+            self.__transformer,
             'CreatedDate',
-            units_of_measure=units_of_measure,
-            loop=False,
+            should_loop=False
         )
 
     def get_authorization_tags(self) -> list[AuthorizationTag]:
@@ -58,7 +62,7 @@ class CSVReferenceDataReader(ReferenceDataReader, Generic[T]):
 
     def read_reference_data(self, now: datetime) -> Iterator[GraphData[T]]:
         data: BaseReferenceData
-        for data in self.__reader:
+        for data in self.__iterator:
             data = self.__reference_data_class(**data)
             # assign a random id and name if the reference data does not have one
             if not data.Id:

@@ -14,6 +14,7 @@ from data_types import StreamTypeEnum
 
 from ..CSVTransformer import CSVTransformer
 from .BackfillableStreamReader import BackfillableStreamReader
+from ..CSVIterator import CSVIterator
 
 
 class CSVStreamReader(BackfillableStreamReader):
@@ -35,13 +36,23 @@ class CSVStreamReader(BackfillableStreamReader):
             )
         )
 
-        self.__reader = CSVTransformer(
-            self.__file_path, self.__data_class, self.__index_property
-        )
+        self.__csv_transformer = CSVTransformer(self.__data_class)
 
-        self.__current_value = None
-        self.__current_value_time = None
-        self.__start_time_csv = self.__reader.get_data_start()
+        # TODO: For now use a single streaming and single backfill iterator.  However
+        # in the future can implement these as an array of iterators where [0] is streaming 
+        # and the rest can be pooled for parallel backfill tasks
+        self.__streaming_data_iterator = CSVIterator(
+            data_file_path = self.__file_path, 
+            transformer = self.__csv_transformer, 
+            index_field = self.__index_property
+        )
+        self.__backfill_data_iterator = CSVIterator(
+            data_file_path = self.__file_path, 
+            transformer = self.__csv_transformer, 
+            index_field = self.__index_property, 
+            file_data_number_of_rows = self.__streaming_data_iterator.get_file_data_number_of_rows(), 
+            file_data_end = self.__streaming_data_iterator.get_file_data_end()
+        )
 
     def get_stream(self) -> OMFContainer:
         return OMFContainer(self.id, self.__omf_type.Id, self.name)
@@ -50,41 +61,38 @@ class CSVStreamReader(BackfillableStreamReader):
         return self.__omf_type
 
     def __get_values(
-        self, start_time: datetime, end_time: datetime
-    ) -> Iterator[(datetime, OMFData)]:
-        if not self.__reader.offset:
-            self.__reader.offset = start_time - self.__start_time_csv
-
+        self, stream_data_iterator: CSVIterator, start_time: datetime, end_time: datetime
+    ) -> Iterator[OMFData]:
         last_time = start_time
         while end_time > last_time:
-            next_data = next(self.__reader, None)
-            value = self.__data_class(**next_data)
-            last_time = getattr(value, self.__index_property)
+            next_row = next(stream_data_iterator, None)
+            current_value = self.__data_class(**next_row)
+            last_time = getattr(current_value, self.__index_property)
 
-            if self.__current_value:
-                yield (
-                    last_time,
-                    OMFData[self.__data_class](
-                        [self.__current_value], ContainerId=self.id
-                    ),
-                )
+            yield OMFData[self.__data_class]([current_value], ContainerId=self.id)
 
-            self.__current_value = value
+    def read_streaming_data(self, now: datetime) -> Iterator[OMFData]:
+        # trim subseconds off of input datetimes for clarity
+        now = now.replace(microsecond=0)
+        
+        # if no current value time then the iterator has never been iterated, so we need to seek to appropriate starting point
+        if not self.__streaming_data_iterator.current_value_time:
+            current_value_time = self.__streaming_data_iterator.seek_to_first_event_prior_to(now)
+        else:
+            current_value_time = self.__streaming_data_iterator.current_value_time
 
-    def read_data(self, now: datetime) -> Iterator[OMFData]:
-        if not self.__current_value_time:
-            self.__current_value_time = getattr(self.__current_value, self.__index_property)
-
-        for last_time, value in self.__get_values(self.__current_value_time, now):
-            self.__current_value_time = last_time
+        for value in self.__get_values(self.__streaming_data_iterator, current_value_time, now):
             for observer in self.observers:
                 observer(value)
             yield value
 
-    def read_backfill(
-        self, start_time: datetime, end_time: datetime
-    ) -> Iterator[OMFData]:
-        for _, value in self.__get_values(start_time, end_time):
+    def read_backfill_data(self, start_time: datetime, end_time: datetime) -> Iterator[OMFData]:
+        # trim subseconds off of input datetimes for clarity
+        start_time = start_time.replace(microsecond=0)
+        end_time = end_time.replace(microsecond=0)
+        current_value_time = self.__backfill_data_iterator.seek_to_first_event_prior_to(start_time)
+
+        for value in self.__get_values(self.__backfill_data_iterator, current_value_time, end_time):
             for observer in self.observers:
                 observer(value)
             yield value

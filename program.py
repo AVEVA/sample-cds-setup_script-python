@@ -672,7 +672,7 @@ def cleanup(appsettings: AppSettings): #TODO parrallize this to delete each at t
         if appsettings.SoloStreamReaders:
             stream_readers += appsettings.SoloStreamReaders
 
-    for tenant in   appsettings.Tenants: #TODO parrallize this to delete each at the same time -- need to consider the write back of the appsettings
+    for tenant in appsettings.Tenants: #TODO parrallize this to delete each at the same time -- need to consider the write back of the appsettings
         setup_credentials = tenant.SetupCredentials
         namespace_id = tenant.NamespaceId
 
@@ -785,13 +785,13 @@ def cleanup(appsettings: AppSettings): #TODO parrallize this to delete each at t
             CleanupProcedures.deleteRoles(adh_client, custom_roles)
 
         if Resource.OMFConnection in resources:
-            print('Deleteing OMF Connection')
+            print('Deleting OMF Connection')
             CleanupProcedures.deleteOMFConnection(
                 adh_client, namespace_id, labels.OMFConnectionName
             )
 
         if Resource.Client in resources:
-            print('Deleteing Client Credentials Client')
+            print('Deleting Client Credentials Client')
             CleanupProcedures.deleteClient(adh_client, labels.ClientName)
 
             print('Removing Run Client from Appsetting')
@@ -813,9 +813,11 @@ def main():
     args = parser.parse_args()
 
     global_settings.application_mode = args.application_mode
-
+    print('Initializing readers... this may take some time depending on the size of your dataset')
+    initialization_start = time.time()
     appsettings = readAppsettings()
-
+    initialization_end = time.time()
+    print(f"Initialization took: {initialization_end - initialization_start}")
     if (
         args.application_mode is global_settings.ApplicationMode.Setup
         or args.application_mode is global_settings.ApplicationMode.SetupAndRun

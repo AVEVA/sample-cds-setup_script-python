@@ -10,7 +10,7 @@ from .EventReader import EventReader
 
 class BackfillableEventReader(EventReader, ABC):
     @abstractmethod
-    def read_backfill(
+    def read_backfill_events(
         self, start_time: datetime, end_time: datetime
     ) -> Iterator[GraphData[BaseEvent]]:
         pass

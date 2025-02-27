@@ -46,7 +46,7 @@ class StreamReader(ABC):
         pass
 
     @abstractmethod
-    def read_data(self, now: datetime) -> Iterator[OMFData]:
+    def read_streaming_data(self, now: datetime) -> Iterator[OMFData]:
         pass
     
     @staticmethod
