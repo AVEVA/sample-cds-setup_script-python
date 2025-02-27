@@ -142,7 +142,8 @@ class CSVIterator:
         current_timestamp = data_file_first_event_timestamp
 
         # edge case, but it is possible that we line up with the very first event in the file, in which case
-        # we need to reset back to the last event in the file on the previous loop
+        # we need to reset back to the last event in the file on the previous loop.  In addition, we need to 
+        # adjust the offset which means we need to know the time difference between the last two rows in the file
         if target_time_offset_in_data_file == timedelta():
             last_two_rows_time_difference = self.__get_last_two_rows_time_difference()
             data_file_target_index = self.__file_data_number_of_rows - 1
