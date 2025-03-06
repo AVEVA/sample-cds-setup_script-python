@@ -366,8 +366,8 @@ def setup(appsettings: AppSettings): #TODO parrallize this to create each at the
     stream_readers = []
     if Resource.Streams in resources:
         stream_readers = hierarchy.get_stream_readers()
-        if appsettings.SoloEventReaders:
-            stream_readers + appsettings.SoloStreamReaders
+        if appsettings.SoloStreamReaders:
+            stream_readers = stream_readers + appsettings.SoloStreamReaders
 
     assets = []
     if Resource.Assets in resources:
