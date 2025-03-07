@@ -70,6 +70,9 @@ class HierarchyNode:
             self.Asset.Name = self.Asset.Id
         if not self.Asset.Metadata:
             self.Asset.Metadata = []
+        for meta in self.Asset.Metadata:
+            if meta.Name == '__Path':
+                return
         self.Asset.Metadata.extend(
             [
                 MetadataItem(
