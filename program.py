@@ -580,9 +580,9 @@ def setup(appsettings: AppSettings): #TODO parrallize this to create each at the
 
             print('Creating Streams')
             SetupProcedures.createStreams(adh_client, omf_client, stream_readers)
-           # SetupProcedures.setStreamACLs(
-            #    adh_client, namespace_id, stream_readers, stream_acl
-           # )
+            SetupProcedures.setStreamACLs(
+                adh_client, namespace_id, stream_readers, stream_acl
+            )
 
         print('Creating Metadata Rule')
         # TODO Not in the library
