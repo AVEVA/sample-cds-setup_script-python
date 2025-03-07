@@ -1,0 +1,2603 @@
+{
+  "AssetTypes":[
+    {
+      "Id": "SERVER-A_500ffd33-d088-4d20-8d97-8783cbc0faed",
+      "Name": "Rotating Machinery - PS Template",
+      "Description": "",
+      "Metadata": [
+        {
+          "Id": "Bearing Temperature|Upper Limit",
+          "Name": "Bearing Temperature|Upper Limit",
+          "SdsTypeCode": "Double",
+          "Uom": "degree Fahrenheit",
+          "Value": 200.0
+        },
+        {
+          "Id": "Model",
+          "Name": "Model",
+          "SdsTypeCode": "String",
+          "Value": "74205"
+        },
+        {
+          "Id": "OnOff|On Threshold",
+          "Name": "OnOff|On Threshold",
+          "SdsTypeCode": "Double",
+          "Value": 0.10000000149011612
+        },
+        {
+          "Id": "OnOff|Pressure Threshold",
+          "Name": "OnOff|Pressure Threshold",
+          "SdsTypeCode": "Double",
+          "Value": 0.75
+        },
+        {
+          "Id": "OnOff|Temperature Threshold",
+          "Name": "OnOff|Temperature Threshold",
+          "SdsTypeCode": "Double",
+          "Value": 0.8500000238418579
+        },
+        {
+          "Id": "Pump Manufacturer",
+          "Name": "Pump Manufacturer",
+          "SdsTypeCode": "String",
+          "Value": "KDY"
+        },
+        {
+          "Id": "Pump Type",
+          "Name": "Pump Type",
+          "SdsTypeCode": "String",
+          "Value": "Centrifugal"
+        },
+        {
+          "Id": "Rated Current Draw",
+          "Name": "Rated Current Draw",
+          "SdsTypeCode": "Double",
+          "Uom": "ampere",
+          "Value": 25.0
+        },
+        {
+          "Id": "Rated Efficiency",
+          "Name": "Rated Efficiency",
+          "SdsTypeCode": "Double",
+          "Uom": "percent",
+          "Value": 85.0
+        },
+        {
+          "Id": "Rated Horsepower",
+          "Name": "Rated Horsepower",
+          "SdsTypeCode": "Double",
+          "Uom": "horsepower",
+          "Value": 10.5
+        },
+        {
+          "Id": "Rated Total Head",
+          "Name": "Rated Total Head",
+          "SdsTypeCode": "Double",
+          "Uom": "foot",
+          "Value": 125.0
+        },
+        {
+          "Id": "Suction Pressure|Upper Limit",
+          "Name": "Suction Pressure|Upper Limit",
+          "SdsTypeCode": "Double",
+          "Uom": "pound-force per square inch",
+          "Value": 155.0
+        }
+      ],
+      "TypeReferences": [
+        {
+          "StreamReferenceId": "Bearing Temperature",
+          "StreamReferenceName": "Bearing Temperature",
+          "TypeId": "PI-Float32",
+          "Description": ""
+        },
+        {
+          "StreamReferenceId": "Current Draw",
+          "StreamReferenceName": "Current Draw",
+          "TypeId": "PI-Float32",
+          "Description": ""
+        },
+        {
+          "StreamReferenceId": "Discharge Flow Rate",
+          "StreamReferenceName": "Discharge Flow Rate",
+          "TypeId": "PI-Float32",
+          "Description": ""
+        },
+        {
+          "StreamReferenceId": "OnOff",
+          "StreamReferenceName": "OnOff",
+          "TypeId": "PI-Float32",
+          "Description": "Random Number Generator for Simulation"
+        },
+        {
+          "StreamReferenceId": "Pump Status",
+          "StreamReferenceName": "Pump Status",
+          "TypeId": "PI-Int32",
+          "Description": ""
+        },
+        {
+          "StreamReferenceId": "Pump Status - String",
+          "StreamReferenceName": "Pump Status - String",
+          "TypeId": "PI-String",
+          "Description": ""
+        },
+        {
+          "StreamReferenceId": "Suction Pressure",
+          "StreamReferenceName": "Suction Pressure",
+          "TypeId": "PI-Float32",
+          "Description": ""
+        }
+      ],
+      "CreatedDate": "2024-11-27T16:07:45.829137+00:00",
+      "ModifiedDate": "2024-11-27T16:07:45.829137+00:00"
+    },
+    {
+      "Id": "bd7b7760-fdbe-4520-baa7-9b710ec8227b",
+      "Name": "Wind.Turbine Asset Type",
+      "Description": "",
+      "Metadata": [
+        {
+          "Id": "32e23ece-c8af-49af-afb7-f901eaf58629",
+          "Name": "Model",
+          "SdsTypeCode": "String",
+          "Value": "74656"
+        },
+        {
+          "Id": "70969638-0dbf-4a86-a89a-b6b3ace6b1cc",
+          "Name": "Author",
+          "SdsTypeCode": "String",
+          "Value": "D. Lopez"
+        }
+      ],
+      "TypeReferences": [
+        {
+          "StreamReferenceId": "f9f6189c-7890-48b3-b104-4b867e23c7f9",
+          "StreamReferenceName": "Wind speed",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "ababfdec-8fba-4d4f-b942-8f99643463cc",
+          "StreamReferenceName": "Wind direction",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "915c0b33-ddd8-45c1-9ac3-efae1f5c4b8a",
+          "StreamReferenceName": "Vibration",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "c725cf6e-550d-4f4e-a484-0178abe316f7",
+          "StreamReferenceName": "Vane position 2",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "838aea95-d1d7-4fb6-b93d-4855ed71e825",
+          "StreamReferenceName": "Vane position 1",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "329ae2b2-7b84-4f67-b8bc-997d270d6a09",
+          "StreamReferenceName": "Turbine speed",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "6bc0fca6-e7a1-4fb2-80f6-0f4e50d88597",
+          "StreamReferenceName": "Turbine status",
+          "TypeId": "TimeIndexed.String"
+        },
+        {
+          "StreamReferenceId": "06ab576e-4df5-4b60-8f0e-4e0328c81411",
+          "StreamReferenceName": "Pitch angle",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "a00c99ae-f351-4dd5-84a8-b2b2962f7be9",
+          "StreamReferenceName": "Outdoor temperature",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "cea9bff8-cb8e-4e93-8f00-31e0ad43c836",
+          "StreamReferenceName": "Hub temperature",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "b71c3dfb-835f-4702-b83d-d57da4f32884",
+          "StreamReferenceName": "Grid voltage",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "9d9d76a0-555d-4e92-b0fd-5b262adcf441",
+          "StreamReferenceName": "Grid frequency",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "26105b9e-8a0d-4690-9f87-139f444caa1f",
+          "StreamReferenceName": "Gearbox oil sump temp",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "4c9237eb-1052-4f3f-acb2-c66bcd548f4d",
+          "StreamReferenceName": "Gearbox inlet temp",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "95dd7c90-9433-4efe-9937-cacdcd421319",
+          "StreamReferenceName": "Gearbox bearing temp",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "838fce9b-9362-4c45-93b0-9f11f4ef0c52",
+          "StreamReferenceName": "Bearing temp",
+          "TypeId": "TimeIndexed.Single"
+        },
+        {
+          "StreamReferenceId": "670f5ab3-132a-42ab-a0fd-b00b099ecb31",
+          "StreamReferenceName": "Amp output",
+          "TypeId": "TimeIndexed.Single"
+        }
+      ],
+      "Status": {
+        "DefinitionType": 1,
+        "Definition": {
+          "StreamReferenceId": "6bc0fca6-e7a1-4fb2-80f6-0f4e50d88597",
+          "StreamPropertyId": "Value",
+          "ValueStatusMappings": [
+            {
+              "Value": "OFF",
+              "Status": "Warning"
+            },
+            {
+              "Value": "ON",
+              "Status": "Good"
+            }
+          ]
+        }
+      },
+      "CreatedDate": "2025-03-03T21:59:19.145493+00:00",
+      "ModifiedDate": "2025-03-03T22:02:36.400196+00:00"
+    }
+  ],
+  "Hierarchy": {
+    "Asset": {
+      "Id": "Gentovo_v2"
+    },
+    "EventReaders": [],
+    "ReferenceDataReaders": [],
+    "Children": [
+      {
+        "Asset": {
+          "Id": "SERVER-A_7b4842b6-acd8-11ef-9504-6045bd9de3ec",
+          "Name": "Rotating Machinery - PS0",
+          "Description": "Real-time analog and digital signals from this rotating asset",
+          "AssetTypeId": "SERVER-A_500ffd33-d088-4d20-8d97-8783cbc0faed",
+          "Metadata": [
+            {
+              "Id": "Bearing Temperature|Upper Limit",
+              "Name": "Bearing Temperature|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "degree Fahrenheit"
+            },
+            {
+              "Id": "Model",
+              "Name": "Model",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "OnOff|On Threshold",
+              "Name": "OnOff|On Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Pressure Threshold",
+              "Name": "OnOff|Pressure Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Temperature Threshold",
+              "Name": "OnOff|Temperature Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "Pump Manufacturer",
+              "Name": "Pump Manufacturer",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Pump Type",
+              "Name": "Pump Type",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Rated Current Draw",
+              "Name": "Rated Current Draw",
+              "SdsTypeCode": "Double",
+              "Uom": "ampere"
+            },
+            {
+              "Id": "Rated Efficiency",
+              "Name": "Rated Efficiency",
+              "SdsTypeCode": "Double",
+              "Uom": "percent"
+            },
+            {
+              "Id": "Rated Horsepower",
+              "Name": "Rated Horsepower",
+              "SdsTypeCode": "Double",
+              "Uom": "horsepower"
+            },
+            {
+              "Id": "Rated Total Head",
+              "Name": "Rated Total Head",
+              "SdsTypeCode": "Double",
+              "Uom": "foot"
+            },
+            {
+              "Id": "Suction Pressure|Upper Limit",
+              "Name": "Suction Pressure|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "pound-force per square inch"
+            },
+            {
+              "Id": "__ParentName",
+              "Name": "__ParentName",
+              "SdsTypeCode": "String",
+              "Value": "Model 74205"
+            },
+            {
+              "Id": "__ParentId",
+              "Name": "__ParentId",
+              "SdsTypeCode": "String",
+              "Value": "7b4842b3-acd8-11ef-9504-6045bd9de3ec"
+            },
+            {
+              "Id": "__Path",
+              "Name": "__Path",
+              "SdsTypeCode": "String",
+              "Value": "\\\\SERVER-A\\Asset Framework 1\\All Assets\\Rotating Machinery\\Model 74205\\Rotating Machinery - PS0"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "Bearing Temperature",
+              "Name": "Bearing Temperature",
+              "StreamId": "PI_SERVER-A_135",
+              "Description": ""
+            },
+            {
+              "Id": "Current Draw",
+              "Name": "Current Draw",
+              "StreamId": "PI_SERVER-A_136",
+              "Description": ""
+            },
+            {
+              "Id": "Discharge Flow Rate",
+              "Name": "Discharge Flow Rate",
+              "StreamId": "PI_SERVER-A_137",
+              "Description": ""
+            },
+            {
+              "Id": "OnOff",
+              "Name": "OnOff",
+              "StreamId": "PI_SERVER-A_138",
+              "Description": "Random Number Generator for Simulation"
+            },
+            {
+              "Id": "Pump Status",
+              "Name": "Pump Status",
+              "StreamId": "PI_SERVER-A_139",
+              "Description": ""
+            },
+            {
+              "Id": "Pump Status - String",
+              "Name": "Pump Status - String",
+              "StreamId": "PI_SERVER-A_140",
+              "Description": ""
+            },
+            {
+              "Id": "Suction Pressure",
+              "Name": "Suction Pressure",
+              "StreamId": "PI_SERVER-A_141",
+              "Description": ""
+            }
+          ],
+          "CreatedDate": "2024-11-27T16:07:45.896017+00:00",
+          "ModifiedDate": "2024-11-27T16:07:45.896017+00:00"
+        },
+        "StreamReaders": [
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_135",
+            "Name": "Rotating Machinery - PS0.Bearing Temperature",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS0_PI_SERVER-A_135.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_136",
+            "Name": "Rotating Machinery - PS0.Current Draw",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS0_PI_SERVER-A_136.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_137",
+            "Name": "Rotating Machinery - PS0.Discharge Flow Rate",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS0_PI_SERVER-A_137.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_138",
+            "Name": "Rotating Machinery - PS0.OnOff",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS0_PI_SERVER-A_138.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_139",
+            "Name": "Rotating Machinery - PS0.Pump Status",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS0_PI_SERVER-A_139.csv",
+            "DataClass": "StreamTypePIInt32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_141",
+            "Name": "Rotating Machinery - PS0.Suction Pressure",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS0_PI_SERVER-A_141.csv",
+            "DataClass": "StreamTypePIFloat32"
+          }
+        ],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "SERVER-A_7b4842bf-acd8-11ef-9504-6045bd9de3ec",
+          "Name": "Rotating Machinery - PS1",
+          "Description": "Real-time analog and digital signals from this rotating asset",
+          "AssetTypeId": "SERVER-A_500ffd33-d088-4d20-8d97-8783cbc0faed",
+          "Metadata": [
+            {
+              "Id": "Bearing Temperature|Upper Limit",
+              "Name": "Bearing Temperature|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "degree Fahrenheit"
+            },
+            {
+              "Id": "Model",
+              "Name": "Model",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "OnOff|On Threshold",
+              "Name": "OnOff|On Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Pressure Threshold",
+              "Name": "OnOff|Pressure Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Temperature Threshold",
+              "Name": "OnOff|Temperature Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "Pump Manufacturer",
+              "Name": "Pump Manufacturer",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Pump Type",
+              "Name": "Pump Type",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Rated Current Draw",
+              "Name": "Rated Current Draw",
+              "SdsTypeCode": "Double",
+              "Uom": "ampere"
+            },
+            {
+              "Id": "Rated Efficiency",
+              "Name": "Rated Efficiency",
+              "SdsTypeCode": "Double",
+              "Uom": "percent"
+            },
+            {
+              "Id": "Rated Horsepower",
+              "Name": "Rated Horsepower",
+              "SdsTypeCode": "Double",
+              "Uom": "horsepower"
+            },
+            {
+              "Id": "Rated Total Head",
+              "Name": "Rated Total Head",
+              "SdsTypeCode": "Double",
+              "Uom": "foot"
+            },
+            {
+              "Id": "Suction Pressure|Upper Limit",
+              "Name": "Suction Pressure|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "pound-force per square inch"
+            },
+            {
+              "Id": "__ParentName",
+              "Name": "__ParentName",
+              "SdsTypeCode": "String",
+              "Value": "Model 74205"
+            },
+            {
+              "Id": "__ParentId",
+              "Name": "__ParentId",
+              "SdsTypeCode": "String",
+              "Value": "7b4842b3-acd8-11ef-9504-6045bd9de3ec"
+            },
+            {
+              "Id": "__Path",
+              "Name": "__Path",
+              "SdsTypeCode": "String",
+              "Value": "\\\\SERVER-A\\Asset Framework 1\\All Assets\\Rotating Machinery\\Model 74205\\Rotating Machinery - PS1"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "Bearing Temperature",
+              "Name": "Bearing Temperature",
+              "StreamId": "PI_SERVER-A_142",
+              "Description": ""
+            },
+            {
+              "Id": "Current Draw",
+              "Name": "Current Draw",
+              "StreamId": "PI_SERVER-A_143",
+              "Description": ""
+            },
+            {
+              "Id": "Discharge Flow Rate",
+              "Name": "Discharge Flow Rate",
+              "StreamId": "PI_SERVER-A_144",
+              "Description": ""
+            },
+            {
+              "Id": "OnOff",
+              "Name": "OnOff",
+              "StreamId": "PI_SERVER-A_145",
+              "Description": "Random Number Generator for Simulation"
+            },
+            {
+              "Id": "Pump Status",
+              "Name": "Pump Status",
+              "StreamId": "PI_SERVER-A_146",
+              "Description": ""
+            },
+            {
+              "Id": "Pump Status - String",
+              "Name": "Pump Status - String",
+              "StreamId": "PI_SERVER-A_147",
+              "Description": ""
+            },
+            {
+              "Id": "Suction Pressure",
+              "Name": "Suction Pressure",
+              "StreamId": "PI_SERVER-A_148",
+              "Description": ""
+            }
+          ],
+          "CreatedDate": "2024-11-27T16:07:46.251679+00:00",
+          "ModifiedDate": "2024-11-27T16:07:46.251679+00:00"
+        },
+        "StreamReaders": [
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_142",
+            "Name": "Rotating Machinery - PS1.Bearing Temperature",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS1_PI_SERVER-A_142.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_143",
+            "Name": "Rotating Machinery - PS1.Current Draw",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS1_PI_SERVER-A_143.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_144",
+            "Name": "Rotating Machinery - PS1.Discharge Flow Rate",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS1_PI_SERVER-A_144.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_145",
+            "Name": "Rotating Machinery - PS1.OnOff",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS1_PI_SERVER-A_145.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_146",
+            "Name": "Rotating Machinery - PS1.Pump Status",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS1_PI_SERVER-A_146.csv",
+            "DataClass": "StreamTypePIInt32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_148",
+            "Name": "Rotating Machinery - PS1.Suction Pressure",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS1_PI_SERVER-A_148.csv",
+            "DataClass": "StreamTypePIFloat32"
+          }
+        ],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "SERVER-A_7b4842c8-acd8-11ef-9504-6045bd9de3ec",
+          "Name": "Rotating Machinery - PS2",
+          "Description": "Real-time analog and digital signals from this rotating asset",
+          "AssetTypeId": "SERVER-A_500ffd33-d088-4d20-8d97-8783cbc0faed",
+          "Metadata": [
+            {
+              "Id": "Bearing Temperature|Upper Limit",
+              "Name": "Bearing Temperature|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "degree Fahrenheit"
+            },
+            {
+              "Id": "Model",
+              "Name": "Model",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "OnOff|On Threshold",
+              "Name": "OnOff|On Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Pressure Threshold",
+              "Name": "OnOff|Pressure Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Temperature Threshold",
+              "Name": "OnOff|Temperature Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "Pump Manufacturer",
+              "Name": "Pump Manufacturer",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Pump Type",
+              "Name": "Pump Type",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Rated Current Draw",
+              "Name": "Rated Current Draw",
+              "SdsTypeCode": "Double",
+              "Uom": "ampere"
+            },
+            {
+              "Id": "Rated Efficiency",
+              "Name": "Rated Efficiency",
+              "SdsTypeCode": "Double",
+              "Uom": "percent"
+            },
+            {
+              "Id": "Rated Horsepower",
+              "Name": "Rated Horsepower",
+              "SdsTypeCode": "Double",
+              "Uom": "horsepower"
+            },
+            {
+              "Id": "Rated Total Head",
+              "Name": "Rated Total Head",
+              "SdsTypeCode": "Double",
+              "Uom": "foot"
+            },
+            {
+              "Id": "Suction Pressure|Upper Limit",
+              "Name": "Suction Pressure|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "pound-force per square inch"
+            },
+            {
+              "Id": "__ParentName",
+              "Name": "__ParentName",
+              "SdsTypeCode": "String",
+              "Value": "Model 74205"
+            },
+            {
+              "Id": "__ParentId",
+              "Name": "__ParentId",
+              "SdsTypeCode": "String",
+              "Value": "7b4842b3-acd8-11ef-9504-6045bd9de3ec"
+            },
+            {
+              "Id": "__Path",
+              "Name": "__Path",
+              "SdsTypeCode": "String",
+              "Value": "\\\\SERVER-A\\Asset Framework 1\\All Assets\\Rotating Machinery\\Model 74205\\Rotating Machinery - PS2"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "Bearing Temperature",
+              "Name": "Bearing Temperature",
+              "StreamId": "PI_SERVER-A_149",
+              "Description": ""
+            },
+            {
+              "Id": "Current Draw",
+              "Name": "Current Draw",
+              "StreamId": "PI_SERVER-A_150",
+              "Description": ""
+            },
+            {
+              "Id": "Discharge Flow Rate",
+              "Name": "Discharge Flow Rate",
+              "StreamId": "PI_SERVER-A_151",
+              "Description": ""
+            },
+            {
+              "Id": "OnOff",
+              "Name": "OnOff",
+              "StreamId": "PI_SERVER-A_152",
+              "Description": "Random Number Generator for Simulation"
+            },
+            {
+              "Id": "Pump Status",
+              "Name": "Pump Status",
+              "StreamId": "PI_SERVER-A_153",
+              "Description": ""
+            },
+            {
+              "Id": "Pump Status - String",
+              "Name": "Pump Status - String",
+              "StreamId": "PI_SERVER-A_154",
+              "Description": ""
+            },
+            {
+              "Id": "Suction Pressure",
+              "Name": "Suction Pressure",
+              "StreamId": "PI_SERVER-A_155",
+              "Description": ""
+            }
+          ],
+          "CreatedDate": "2024-11-27T16:07:46.556421+00:00",
+          "ModifiedDate": "2024-11-27T16:07:46.556421+00:00"
+        },
+        "StreamReaders": [
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_149",
+            "Name": "Rotating Machinery - PS2.Bearing Temperature",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS2_PI_SERVER-A_149.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_150",
+            "Name": "Rotating Machinery - PS2.Current Draw",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS2_PI_SERVER-A_150.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_151",
+            "Name": "Rotating Machinery - PS2.Discharge Flow Rate",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS2_PI_SERVER-A_151.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_152",
+            "Name": "Rotating Machinery - PS2.OnOff",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS2_PI_SERVER-A_152.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_153",
+            "Name": "Rotating Machinery - PS2.Pump Status",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS2_PI_SERVER-A_153.csv",
+            "DataClass": "StreamTypePIInt32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_155",
+            "Name": "Rotating Machinery - PS2.Suction Pressure",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS2_PI_SERVER-A_155.csv",
+            "DataClass": "StreamTypePIFloat32"
+          }
+        ],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "SERVER-A_7b4842d1-acd8-11ef-9504-6045bd9de3ec",
+          "Name": "Rotating Machinery - PS3",
+          "Description": "Real-time analog and digital signals from this rotating asset",
+          "AssetTypeId": "SERVER-A_500ffd33-d088-4d20-8d97-8783cbc0faed",
+          "Metadata": [
+            {
+              "Id": "Bearing Temperature|Upper Limit",
+              "Name": "Bearing Temperature|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "degree Fahrenheit"
+            },
+            {
+              "Id": "Model",
+              "Name": "Model",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "OnOff|On Threshold",
+              "Name": "OnOff|On Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Pressure Threshold",
+              "Name": "OnOff|Pressure Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Temperature Threshold",
+              "Name": "OnOff|Temperature Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "Pump Manufacturer",
+              "Name": "Pump Manufacturer",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Pump Type",
+              "Name": "Pump Type",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Rated Current Draw",
+              "Name": "Rated Current Draw",
+              "SdsTypeCode": "Double",
+              "Uom": "ampere"
+            },
+            {
+              "Id": "Rated Efficiency",
+              "Name": "Rated Efficiency",
+              "SdsTypeCode": "Double",
+              "Uom": "percent"
+            },
+            {
+              "Id": "Rated Horsepower",
+              "Name": "Rated Horsepower",
+              "SdsTypeCode": "Double",
+              "Uom": "horsepower"
+            },
+            {
+              "Id": "Rated Total Head",
+              "Name": "Rated Total Head",
+              "SdsTypeCode": "Double",
+              "Uom": "foot"
+            },
+            {
+              "Id": "Suction Pressure|Upper Limit",
+              "Name": "Suction Pressure|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "pound-force per square inch"
+            },
+            {
+              "Id": "__ParentName",
+              "Name": "__ParentName",
+              "SdsTypeCode": "String",
+              "Value": "Model 74205"
+            },
+            {
+              "Id": "__ParentId",
+              "Name": "__ParentId",
+              "SdsTypeCode": "String",
+              "Value": "7b4842b3-acd8-11ef-9504-6045bd9de3ec"
+            },
+            {
+              "Id": "__Path",
+              "Name": "__Path",
+              "SdsTypeCode": "String",
+              "Value": "\\\\SERVER-A\\Asset Framework 1\\All Assets\\Rotating Machinery\\Model 74205\\Rotating Machinery - PS3"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "Bearing Temperature",
+              "Name": "Bearing Temperature",
+              "StreamId": "PI_SERVER-A_156",
+              "Description": ""
+            },
+            {
+              "Id": "Current Draw",
+              "Name": "Current Draw",
+              "StreamId": "PI_SERVER-A_157",
+              "Description": ""
+            },
+            {
+              "Id": "Discharge Flow Rate",
+              "Name": "Discharge Flow Rate",
+              "StreamId": "PI_SERVER-A_158",
+              "Description": ""
+            },
+            {
+              "Id": "OnOff",
+              "Name": "OnOff",
+              "StreamId": "PI_SERVER-A_159",
+              "Description": "Random Number Generator for Simulation"
+            },
+            {
+              "Id": "Pump Status",
+              "Name": "Pump Status",
+              "StreamId": "PI_SERVER-A_160",
+              "Description": ""
+            },
+            {
+              "Id": "Pump Status - String",
+              "Name": "Pump Status - String",
+              "StreamId": "PI_SERVER-A_161",
+              "Description": ""
+            },
+            {
+              "Id": "Suction Pressure",
+              "Name": "Suction Pressure",
+              "StreamId": "PI_SERVER-A_162",
+              "Description": ""
+            }
+          ],
+          "CreatedDate": "2024-11-27T16:07:47.016999+00:00",
+          "ModifiedDate": "2024-11-27T16:07:47.016999+00:00"
+        },
+        "StreamReaders": [
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_156",
+            "Name": "Rotating Machinery - PS3.Bearing Temperature",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS3_PI_SERVER-A_156.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_157",
+            "Name": "Rotating Machinery - PS3.Current Draw",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS3_PI_SERVER-A_157.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_158",
+            "Name": "Rotating Machinery - PS3.Discharge Flow Rate",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS3_PI_SERVER-A_158.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_159",
+            "Name": "Rotating Machinery - PS3.OnOff",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS3_PI_SERVER-A_159.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_160",
+            "Name": "Rotating Machinery - PS3.Pump Status",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS3_PI_SERVER-A_160.csv",
+            "DataClass": "StreamTypePIInt32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_162",
+            "Name": "Rotating Machinery - PS3.Suction Pressure",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS3_PI_SERVER-A_162.csv",
+            "DataClass": "StreamTypePIFloat32"
+          }
+        ],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "SERVER-A_7b4842da-acd8-11ef-9504-6045bd9de3ec",
+          "Name": "Rotating Machinery - PS4",
+          "Description": "Real-time analog and digital signals from this rotating asset",
+          "AssetTypeId": "SERVER-A_500ffd33-d088-4d20-8d97-8783cbc0faed",
+          "Metadata": [
+            {
+              "Id": "Bearing Temperature|Upper Limit",
+              "Name": "Bearing Temperature|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "degree Fahrenheit"
+            },
+            {
+              "Id": "Model",
+              "Name": "Model",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "OnOff|On Threshold",
+              "Name": "OnOff|On Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Pressure Threshold",
+              "Name": "OnOff|Pressure Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Temperature Threshold",
+              "Name": "OnOff|Temperature Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "Pump Manufacturer",
+              "Name": "Pump Manufacturer",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Pump Type",
+              "Name": "Pump Type",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Rated Current Draw",
+              "Name": "Rated Current Draw",
+              "SdsTypeCode": "Double",
+              "Uom": "ampere"
+            },
+            {
+              "Id": "Rated Efficiency",
+              "Name": "Rated Efficiency",
+              "SdsTypeCode": "Double",
+              "Uom": "percent"
+            },
+            {
+              "Id": "Rated Horsepower",
+              "Name": "Rated Horsepower",
+              "SdsTypeCode": "Double",
+              "Uom": "horsepower"
+            },
+            {
+              "Id": "Rated Total Head",
+              "Name": "Rated Total Head",
+              "SdsTypeCode": "Double",
+              "Uom": "foot"
+            },
+            {
+              "Id": "Suction Pressure|Upper Limit",
+              "Name": "Suction Pressure|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "pound-force per square inch"
+            },
+            {
+              "Id": "__ParentName",
+              "Name": "__ParentName",
+              "SdsTypeCode": "String",
+              "Value": "Model 74205"
+            },
+            {
+              "Id": "__ParentId",
+              "Name": "__ParentId",
+              "SdsTypeCode": "String",
+              "Value": "7b4842b3-acd8-11ef-9504-6045bd9de3ec"
+            },
+            {
+              "Id": "__Path",
+              "Name": "__Path",
+              "SdsTypeCode": "String",
+              "Value": "\\\\SERVER-A\\Asset Framework 1\\All Assets\\Rotating Machinery\\Model 74205\\Rotating Machinery - PS4"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "Bearing Temperature",
+              "Name": "Bearing Temperature",
+              "StreamId": "PI_SERVER-A_163",
+              "Description": ""
+            },
+            {
+              "Id": "Current Draw",
+              "Name": "Current Draw",
+              "StreamId": "PI_SERVER-A_164",
+              "Description": ""
+            },
+            {
+              "Id": "Discharge Flow Rate",
+              "Name": "Discharge Flow Rate",
+              "StreamId": "PI_SERVER-A_165",
+              "Description": ""
+            },
+            {
+              "Id": "OnOff",
+              "Name": "OnOff",
+              "StreamId": "PI_SERVER-A_166",
+              "Description": "Random Number Generator for Simulation"
+            },
+            {
+              "Id": "Pump Status",
+              "Name": "Pump Status",
+              "StreamId": "PI_SERVER-A_167",
+              "Description": ""
+            },
+            {
+              "Id": "Pump Status - String",
+              "Name": "Pump Status - String",
+              "StreamId": "PI_SERVER-A_168",
+              "Description": ""
+            },
+            {
+              "Id": "Suction Pressure",
+              "Name": "Suction Pressure",
+              "StreamId": "PI_SERVER-A_169",
+              "Description": ""
+            }
+          ],
+          "CreatedDate": "2024-11-27T16:07:47.043073+00:00",
+          "ModifiedDate": "2024-11-27T16:07:47.043073+00:00"
+        },
+        "StreamReaders": [
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_163",
+            "Name": "Rotating Machinery - PS4.Bearing Temperature",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS4_PI_SERVER-A_163.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_164",
+            "Name": "Rotating Machinery - PS4.Current Draw",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS4_PI_SERVER-A_164.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_165",
+            "Name": "Rotating Machinery - PS4.Discharge Flow Rate",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS4_PI_SERVER-A_165.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_166",
+            "Name": "Rotating Machinery - PS4.OnOff",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS4_PI_SERVER-A_166.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_167",
+            "Name": "Rotating Machinery - PS4.Pump Status",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS4_PI_SERVER-A_167.csv",
+            "DataClass": "StreamTypePIInt32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_169",
+            "Name": "Rotating Machinery - PS4.Suction Pressure",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS4_PI_SERVER-A_169.csv",
+            "DataClass": "StreamTypePIFloat32"
+          }
+        ],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "SERVER-A_7b4842e3-acd8-11ef-9504-6045bd9de3ec",
+          "Name": "Rotating Machinery - PS5",
+          "Description": "Real-time analog and digital signals from this rotating asset",
+          "AssetTypeId": "SERVER-A_500ffd33-d088-4d20-8d97-8783cbc0faed",
+          "Metadata": [
+            {
+              "Id": "Bearing Temperature|Upper Limit",
+              "Name": "Bearing Temperature|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "degree Fahrenheit"
+            },
+            {
+              "Id": "Model",
+              "Name": "Model",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "OnOff|On Threshold",
+              "Name": "OnOff|On Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Pressure Threshold",
+              "Name": "OnOff|Pressure Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Temperature Threshold",
+              "Name": "OnOff|Temperature Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "Pump Manufacturer",
+              "Name": "Pump Manufacturer",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Pump Type",
+              "Name": "Pump Type",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Rated Current Draw",
+              "Name": "Rated Current Draw",
+              "SdsTypeCode": "Double",
+              "Uom": "ampere"
+            },
+            {
+              "Id": "Rated Efficiency",
+              "Name": "Rated Efficiency",
+              "SdsTypeCode": "Double",
+              "Uom": "percent"
+            },
+            {
+              "Id": "Rated Horsepower",
+              "Name": "Rated Horsepower",
+              "SdsTypeCode": "Double",
+              "Uom": "horsepower"
+            },
+            {
+              "Id": "Rated Total Head",
+              "Name": "Rated Total Head",
+              "SdsTypeCode": "Double",
+              "Uom": "foot"
+            },
+            {
+              "Id": "Suction Pressure|Upper Limit",
+              "Name": "Suction Pressure|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "pound-force per square inch"
+            },
+            {
+              "Id": "__ParentName",
+              "Name": "__ParentName",
+              "SdsTypeCode": "String",
+              "Value": "Model 74205"
+            },
+            {
+              "Id": "__ParentId",
+              "Name": "__ParentId",
+              "SdsTypeCode": "String",
+              "Value": "7b4842b3-acd8-11ef-9504-6045bd9de3ec"
+            },
+            {
+              "Id": "__Path",
+              "Name": "__Path",
+              "SdsTypeCode": "String",
+              "Value": "\\\\SERVER-A\\Asset Framework 1\\All Assets\\Rotating Machinery\\Model 74205\\Rotating Machinery - PS5"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "Bearing Temperature",
+              "Name": "Bearing Temperature",
+              "StreamId": "PI_SERVER-A_170",
+              "Description": ""
+            },
+            {
+              "Id": "Current Draw",
+              "Name": "Current Draw",
+              "StreamId": "PI_SERVER-A_171",
+              "Description": ""
+            },
+            {
+              "Id": "Discharge Flow Rate",
+              "Name": "Discharge Flow Rate",
+              "StreamId": "PI_SERVER-A_172",
+              "Description": ""
+            },
+            {
+              "Id": "OnOff",
+              "Name": "OnOff",
+              "StreamId": "PI_SERVER-A_173",
+              "Description": "Random Number Generator for Simulation"
+            },
+            {
+              "Id": "Pump Status",
+              "Name": "Pump Status",
+              "StreamId": "PI_SERVER-A_174",
+              "Description": ""
+            },
+            {
+              "Id": "Pump Status - String",
+              "Name": "Pump Status - String",
+              "StreamId": "PI_SERVER-A_175",
+              "Description": ""
+            },
+            {
+              "Id": "Suction Pressure",
+              "Name": "Suction Pressure",
+              "StreamId": "PI_SERVER-A_176",
+              "Description": ""
+            }
+          ],
+          "CreatedDate": "2024-11-27T16:07:47.072192+00:00",
+          "ModifiedDate": "2024-11-27T16:07:47.072192+00:00"
+        },
+        "StreamReaders": [
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_170",
+            "Name": "Rotating Machinery - PS5.Bearing Temperature",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS5_PI_SERVER-A_170.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_171",
+            "Name": "Rotating Machinery - PS5.Current Draw",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS5_PI_SERVER-A_171.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_172",
+            "Name": "Rotating Machinery - PS5.Discharge Flow Rate",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS5_PI_SERVER-A_172.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_173",
+            "Name": "Rotating Machinery - PS5.OnOff",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS5_PI_SERVER-A_173.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_174",
+            "Name": "Rotating Machinery - PS5.Pump Status",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS5_PI_SERVER-A_174.csv",
+            "DataClass": "StreamTypePIInt32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_176",
+            "Name": "Rotating Machinery - PS5.Suction Pressure",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS5_PI_SERVER-A_176.csv",
+            "DataClass": "StreamTypePIFloat32"
+          }
+        ],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "SERVER-A_7b4842ec-acd8-11ef-9504-6045bd9de3ec",
+          "Name": "Rotating Machinery - PS6",
+          "Description": "Real-time analog and digital signals from this rotating asset",
+          "AssetTypeId": "SERVER-A_500ffd33-d088-4d20-8d97-8783cbc0faed",
+          "Metadata": [
+            {
+              "Id": "Bearing Temperature|Upper Limit",
+              "Name": "Bearing Temperature|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "degree Fahrenheit"
+            },
+            {
+              "Id": "Model",
+              "Name": "Model",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "OnOff|On Threshold",
+              "Name": "OnOff|On Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Pressure Threshold",
+              "Name": "OnOff|Pressure Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "OnOff|Temperature Threshold",
+              "Name": "OnOff|Temperature Threshold",
+              "SdsTypeCode": "Double"
+            },
+            {
+              "Id": "Pump Manufacturer",
+              "Name": "Pump Manufacturer",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Pump Type",
+              "Name": "Pump Type",
+              "SdsTypeCode": "String"
+            },
+            {
+              "Id": "Rated Current Draw",
+              "Name": "Rated Current Draw",
+              "SdsTypeCode": "Double",
+              "Uom": "ampere"
+            },
+            {
+              "Id": "Rated Efficiency",
+              "Name": "Rated Efficiency",
+              "SdsTypeCode": "Double",
+              "Uom": "percent"
+            },
+            {
+              "Id": "Rated Horsepower",
+              "Name": "Rated Horsepower",
+              "SdsTypeCode": "Double",
+              "Uom": "horsepower"
+            },
+            {
+              "Id": "Rated Total Head",
+              "Name": "Rated Total Head",
+              "SdsTypeCode": "Double",
+              "Uom": "foot"
+            },
+            {
+              "Id": "Suction Pressure|Upper Limit",
+              "Name": "Suction Pressure|Upper Limit",
+              "SdsTypeCode": "Double",
+              "Uom": "pound-force per square inch"
+            },
+            {
+              "Id": "__ParentName",
+              "Name": "__ParentName",
+              "SdsTypeCode": "String",
+              "Value": "Model 74205"
+            },
+            {
+              "Id": "__ParentId",
+              "Name": "__ParentId",
+              "SdsTypeCode": "String",
+              "Value": "7b4842b3-acd8-11ef-9504-6045bd9de3ec"
+            },
+            {
+              "Id": "__Path",
+              "Name": "__Path",
+              "SdsTypeCode": "String",
+              "Value": "\\\\SERVER-A\\Asset Framework 1\\All Assets\\Rotating Machinery\\Model 74205\\Rotating Machinery - PS6"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "Bearing Temperature",
+              "Name": "Bearing Temperature",
+              "StreamId": "PI_SERVER-A_177",
+              "Description": ""
+            },
+            {
+              "Id": "Current Draw",
+              "Name": "Current Draw",
+              "StreamId": "PI_SERVER-A_178",
+              "Description": ""
+            },
+            {
+              "Id": "Discharge Flow Rate",
+              "Name": "Discharge Flow Rate",
+              "StreamId": "PI_SERVER-A_179",
+              "Description": ""
+            },
+            {
+              "Id": "OnOff",
+              "Name": "OnOff",
+              "StreamId": "PI_SERVER-A_180",
+              "Description": "Random Number Generator for Simulation"
+            },
+            {
+              "Id": "Pump Status",
+              "Name": "Pump Status",
+              "StreamId": "PI_SERVER-A_181",
+              "Description": ""
+            },
+            {
+              "Id": "Pump Status - String",
+              "Name": "Pump Status - String",
+              "StreamId": "PI_SERVER-A_182",
+              "Description": ""
+            },
+            {
+              "Id": "Suction Pressure",
+              "Name": "Suction Pressure",
+              "StreamId": "PI_SERVER-A_183",
+              "Description": ""
+            }
+          ],
+          "CreatedDate": "2024-11-27T16:07:47.126341+00:00",
+          "ModifiedDate": "2024-11-27T16:07:47.126341+00:00"
+        },
+        "StreamReaders": [
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_177",
+            "Name": "Rotating Machinery - PS6.Bearing Temperature",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS6_PI_SERVER-A_177.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_178",
+            "Name": "Rotating Machinery - PS6.Current Draw",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS6_PI_SERVER-A_178.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_179",
+            "Name": "Rotating Machinery - PS6.Discharge Flow Rate",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS6_PI_SERVER-A_179.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_180",
+            "Name": "Rotating Machinery - PS6.OnOff",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS6_PI_SERVER-A_180.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_181",
+            "Name": "Rotating Machinery - PS6.Pump Status",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS6_PI_SERVER-A_181.csv",
+            "DataClass": "StreamTypePIInt32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_183",
+            "Name": "Rotating Machinery - PS6.Suction Pressure",
+            "FilePath": "data/gentovo_v2/stream/Rotating Machinery - PS6_PI_SERVER-A_183.csv",
+            "DataClass": "StreamTypePIFloat32"
+          }
+        ],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "SERVER-A_9db2c8d4-9d35-11ef-9504-6045bd9de3ec",
+          "Name": "Plant1.M1",
+          "Description": "Real-time continuous data feeds AF Element",
+          "Metadata": [
+            {
+              "Id": "__ParentName",
+              "Name": "__ParentName",
+              "SdsTypeCode": "String",
+              "Value": "Plant1"
+            },
+            {
+              "Id": "__ParentId",
+              "Name": "__ParentId",
+              "SdsTypeCode": "String",
+              "Value": "9db2c8d1-9d35-11ef-9504-6045bd9de3ec"
+            },
+            {
+              "Id": "__Path",
+              "Name": "__Path",
+              "SdsTypeCode": "String",
+              "Value": "\\\\SERVER-A\\Asset Framework 1\\Plant1\\Plant1.M1"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "Plant1.M1.PE.Agitator Watts",
+              "Name": "Plant1.M1.PE.Agitator Watts",
+              "StreamId": "PI_SERVER-A_80"
+            },
+            {
+              "Id": "Plant1.M1.PE.Heater Watts",
+              "Name": "Plant1.M1.PE.Heater Watts",
+              "StreamId": "PI_SERVER-A_81"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Concentration",
+              "Name": "Plant1.M1.PQ.Concentration",
+              "StreamId": "PI_SERVER-A_82"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Dissolved Ingredient Amount",
+              "Name": "Plant1.M1.PQ.Dissolved Ingredient Amount",
+              "StreamId": "PI_SERVER-A_84"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Dissolved Ingredient Ratio",
+              "Name": "Plant1.M1.PQ.Dissolved Ingredient Ratio",
+              "StreamId": "PI_SERVER-A_85"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Dissolving Rate",
+              "Name": "Plant1.M1.PQ.Dissolving Rate",
+              "StreamId": "PI_SERVER-A_86"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Dissolving Rate HI",
+              "Name": "Plant1.M1.PQ.Dissolving Rate HI",
+              "StreamId": "PI_SERVER-A_87"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Dissolving Rate LO",
+              "Name": "Plant1.M1.PQ.Dissolving Rate LO",
+              "StreamId": "PI_SERVER-A_88"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Dissolving Rate Target",
+              "Name": "Plant1.M1.PQ.Dissolving Rate Target",
+              "StreamId": "PI_SERVER-A_89"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Fill Level",
+              "Name": "Plant1.M1.PQ.Fill Level",
+              "StreamId": "PI_SERVER-A_90"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Granule Size",
+              "Name": "Plant1.M1.PQ.Granule Size",
+              "StreamId": "PI_SERVER-A_91"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Ingredient Rate",
+              "Name": "Plant1.M1.PQ.Ingredient Rate",
+              "StreamId": "PI_SERVER-A_92"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Outflow Rate",
+              "Name": "Plant1.M1.PQ.Outflow Rate",
+              "StreamId": "PI_SERVER-A_93"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Product",
+              "Name": "Plant1.M1.PQ.Product",
+              "StreamId": "PI_SERVER-A_94"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Ratio",
+              "Name": "Plant1.M1.PQ.Ratio",
+              "StreamId": "PI_SERVER-A_95"
+            },
+            {
+              "Id": "Plant1.M1.PQ.RunID",
+              "Name": "Plant1.M1.PQ.RunID",
+              "StreamId": "PI_SERVER-A_96"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Speed PV",
+              "Name": "Plant1.M1.PQ.Speed PV",
+              "StreamId": "PI_SERVER-A_97"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Speed SP",
+              "Name": "Plant1.M1.PQ.Speed SP",
+              "StreamId": "PI_SERVER-A_98"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Temperature PV",
+              "Name": "Plant1.M1.PQ.Temperature PV",
+              "StreamId": "PI_SERVER-A_99"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Temperature SP",
+              "Name": "Plant1.M1.PQ.Temperature SP",
+              "StreamId": "PI_SERVER-A_100"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Total Ingredient Added",
+              "Name": "Plant1.M1.PQ.Total Ingredient Added",
+              "StreamId": "PI_SERVER-A_101"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Total Ingredient Dissolved",
+              "Name": "Plant1.M1.PQ.Total Ingredient Dissolved",
+              "StreamId": "PI_SERVER-A_102"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Total Ingredient Undissolved",
+              "Name": "Plant1.M1.PQ.Total Ingredient Undissolved",
+              "StreamId": "PI_SERVER-A_103"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Total Water",
+              "Name": "Plant1.M1.PQ.Total Water",
+              "StreamId": "PI_SERVER-A_104"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Viscosity",
+              "Name": "Plant1.M1.PQ.Viscosity",
+              "StreamId": "PI_SERVER-A_105"
+            },
+            {
+              "Id": "Plant1.M1.PQ.Water Rate",
+              "Name": "Plant1.M1.PQ.Water Rate",
+              "StreamId": "PI_SERVER-A_106"
+            },
+            {
+              "Id": "Plant1.M1.Status",
+              "Name": "Plant1.M1.Status",
+              "StreamId": "PI_SERVER-A_107"
+            }
+          ],
+          "Status": {
+            "DefinitionType": 1,
+            "Definition": {
+              "StreamReferenceId": "Plant1.M1.Status",
+              "StreamPropertyId": "Value",
+              "ValueStatusMappings": [
+                {
+                  "Value": "Running",
+                  "Status": "Good"
+                },
+                {
+                  "Value": "Down",
+                  "Status": "Warning"
+                }
+              ]
+            }
+          },
+          "CreatedDate": "2024-11-07T18:28:42.191003+00:00",
+          "ModifiedDate": "2024-12-05T23:01:51.872485+00:00"
+        },
+        "StreamReaders": [
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_80",
+            "Name": "Plant1.M1.PE.Agitator Watts",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_80.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_81",
+            "Name": "Plant1.M1.PE.Heater Watts",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_81.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_82",
+            "Name": "Plant1.M1.PQ.Concentration",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_82.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_84",
+            "Name": "Plant1.M1.PQ.Dissolved Ingredient Amount",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_84.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_85",
+            "Name": "Plant1.M1.PQ.Dissolved Ingredient Ratio",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_85.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_86",
+            "Name": "Plant1.M1.PQ.Dissolving Rate",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_86.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_87",
+            "Name": "Plant1.M1.PQ.Dissolving Rate HI",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_87.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_88",
+            "Name": "Plant1.M1.PQ.Dissolving Rate LO",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_88.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_89",
+            "Name": "Plant1.M1.PQ.Dissolving Rate Target",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_89.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_90",
+            "Name": "Plant1.M1.PQ.Fill Level",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_90.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_91",
+            "Name": "Plant1.M1.PQ.Granule Size",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_91.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_92",
+            "Name": "Plant1.M1.PQ.Ingredient Rate",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_92.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_93",
+            "Name": "Plant1.M1.PQ.Outflow Rate",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_93.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_95",
+            "Name": "Plant1.M1.PQ.Ratio",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_95.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_96",
+            "Name": "Plant1.M1.PQ.RunID",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_96.csv",
+            "DataClass": "StreamTypePIInt32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_97",
+            "Name": "Plant1.M1.PQ.Speed PV",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_97.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_98",
+            "Name": "Plant1.M1.PQ.Speed SP",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_98.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_99",
+            "Name": "Plant1.M1.PQ.Temperature PV",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_99.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_100",
+            "Name": "Plant1.M1.PQ.Temperature SP",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_100.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_101",
+            "Name": "Plant1.M1.PQ.Total Ingredient Added",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_101.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_102",
+            "Name": "Plant1.M1.PQ.Total Ingredient Dissolved",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_102.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_103",
+            "Name": "Plant1.M1.PQ.Total Ingredient Undissolved",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_103.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_104",
+            "Name": "Plant1.M1.PQ.Total Water",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_104.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_105",
+            "Name": "Plant1.M1.PQ.Viscosity",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_105.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_106",
+            "Name": "Plant1.M1.PQ.Water Rate",
+            "FilePath": "data/gentovo_v2/stream/Plant1.M1_PI_SERVER-A_106.csv",
+            "DataClass": "StreamTypePIFloat32"
+          }
+        ],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "SERVER-A_e81a02eb-a6c9-11ef-9504-6045bd9de3ec",
+          "Name": "Plant1.Line1",
+          "Description": "Carbonator, Chiller, and Warmer AF Element",
+          "Metadata": [
+            {
+              "Id": "__ParentName",
+              "Name": "__ParentName",
+              "SdsTypeCode": "String",
+              "Value": "Plant1"
+            },
+            {
+              "Id": "__ParentId",
+              "Name": "__ParentId",
+              "SdsTypeCode": "String",
+              "Value": "9db2c8d1-9d35-11ef-9504-6045bd9de3ec"
+            },
+            {
+              "Id": "__Path",
+              "Name": "__Path",
+              "SdsTypeCode": "String",
+              "Value": "\\\\SERVER-A\\Asset Framework 1\\Plant1\\Plant1.Line1"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "Carbonator.CO2 Level",
+              "Name": "Carbonator.CO2 Level",
+              "StreamId": "PI_SERVER-A_127"
+            },
+            {
+              "Id": "Carbonator.Pressure",
+              "Name": "Carbonator.Pressure",
+              "StreamId": "PI_SERVER-A_125"
+            },
+            {
+              "Id": "Carbonator.Temp",
+              "Name": "Carbonator.Temp",
+              "StreamId": "PI_SERVER-A_126"
+            },
+            {
+              "Id": "Chiller.Energy Usage",
+              "Name": "Chiller.Energy Usage",
+              "StreamId": "PI_SERVER-A_124"
+            },
+            {
+              "Id": "Chiller.Inlet DO",
+              "Name": "Chiller.Inlet DO",
+              "StreamId": "PI_SERVER-A_121"
+            },
+            {
+              "Id": "Chiller.Product Inlet Temperature",
+              "Name": "Chiller.Product Inlet Temperature",
+              "StreamId": "PI_SERVER-A_122"
+            },
+            {
+              "Id": "Chiller.Product Outlet Temperature",
+              "Name": "Chiller.Product Outlet Temperature",
+              "StreamId": "PI_SERVER-A_123"
+            },
+            {
+              "Id": "Chiller.Refrigerant Flow",
+              "Name": "Chiller.Refrigerant Flow",
+              "StreamId": "PI_SERVER-A_134"
+            },
+            {
+              "Id": "RunningState",
+              "Name": "RunningState",
+              "StreamId": "PI_SERVER-A_133"
+            },
+            {
+              "Id": "SKU",
+              "Name": "SKU",
+              "StreamId": "PI_SERVER-A_132"
+            },
+            {
+              "Id": "Warmer.Energy Usage",
+              "Name": "Warmer.Energy Usage",
+              "StreamId": "PI_SERVER-A_131"
+            },
+            {
+              "Id": "Warmer.Zone 1 Temperature",
+              "Name": "Warmer.Zone 1 Temperature",
+              "StreamId": "PI_SERVER-A_128"
+            },
+            {
+              "Id": "Warmer.Zone 2 Temperature",
+              "Name": "Warmer.Zone 2 Temperature",
+              "StreamId": "PI_SERVER-A_129"
+            },
+            {
+              "Id": "Warmer.Zone 3 Temperature",
+              "Name": "Warmer.Zone 3 Temperature",
+              "StreamId": "PI_SERVER-A_130"
+            },
+            {
+              "Id": "RunningState Code",
+              "Name": "RunningState Code",
+              "StreamId": "PI_SERVER-A_187"
+            }
+          ],
+          "CreatedDate": "2024-12-02T20:42:14.696954+00:00",
+          "ModifiedDate": "2024-12-05T23:01:52.360302+00:00"
+        },
+        "StreamReaders": [
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_127",
+            "Name": "ED.Pack.Line1.Carb.CO2Level",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_127.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_125",
+            "Name": "ED.Pack.Line1.Carb.Pressure",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_125.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_126",
+            "Name": "ED.Pack.Line1.Carb.Temp",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_126.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_124",
+            "Name": "ED.Pack.Line1.Chill.EnergyUsage",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_124.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_121",
+            "Name": "ED.Pack.Line1.Chill.InletDO",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_121.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_122",
+            "Name": "ED.Pack.Line1.Chill.ProductInletTemp",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_122.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_123",
+            "Name": "ED.Pack.Line1.Chill.ProductOutletTemp",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_123.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_134",
+            "Name": "ED.Pack.Line1.Chill.RefrigerantFlow",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_134.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_133",
+            "Name": "ED.Pack.Line1.RunningState",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_133.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_131",
+            "Name": "ED.Pack.Line1.Warmer.EnergyUsage",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_131.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_128",
+            "Name": "ED.Pack.Line1.Warmer.Zone1Temp",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_128.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_129",
+            "Name": "ED.Pack.Line1.Warmer.Zone2Temp",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_129.csv",
+            "DataClass": "StreamTypePIFloat32"
+          },
+          {
+            "Reader": "CSVStreamReader",
+            "Id": "PI_SERVER-A_130",
+            "Name": "ED.Pack.Line1.Warmer.Zone3Temp",
+            "FilePath": "data/gentovo_v2/stream/Plant1.Line1_PI_SERVER-A_130.csv",
+            "DataClass": "StreamTypePIFloat32"
+          }
+        ],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "Wind.Turbine1",
+          "Name": "Wind.Turbine1",
+          "Description": "Real-time turbine and environmental telemetry",
+          "AssetTypeId": "bd7b7760-fdbe-4520-baa7-9b710ec8227b",
+          "Metadata": [
+            {
+              "Id": "32e23ece-c8af-49af-afb7-f901eaf58629",
+              "Name": "Model",
+              "SdsTypeCode": "String",
+              "Value": "74656"
+            },
+            {
+              "Id": "70969638-0dbf-4a86-a89a-b6b3ace6b1cc",
+              "Name": "Author",
+              "SdsTypeCode": "String",
+              "Value": "D. Lopez"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "f9f6189c-7890-48b3-b104-4b867e23c7f9",
+              "Name": "Wind speed",
+              "StreamId": "Wind.Turbine1.wind_speed"
+            },
+            {
+              "Id": "ababfdec-8fba-4d4f-b942-8f99643463cc",
+              "Name": "Wind direction",
+              "StreamId": "Wind.Turbine1.wind_direction"
+            },
+            {
+              "Id": "915c0b33-ddd8-45c1-9ac3-efae1f5c4b8a",
+              "Name": "Vibration",
+              "StreamId": "Wind.Turbine1.vibration"
+            },
+            {
+              "Id": "c725cf6e-550d-4f4e-a484-0178abe316f7",
+              "Name": "Vane position 2",
+              "StreamId": "Wind.Turbine1.Vane_position_2"
+            },
+            {
+              "Id": "838aea95-d1d7-4fb6-b93d-4855ed71e825",
+              "Name": "Vane position 1",
+              "StreamId": "Wind.Turbine1.Vane_position_1"
+            },
+            {
+              "Id": "329ae2b2-7b84-4f67-b8bc-997d270d6a09",
+              "Name": "Turbine speed",
+              "StreamId": "Wind.Turbine1.turbine_speed"
+            },
+            {
+              "Id": "6bc0fca6-e7a1-4fb2-80f6-0f4e50d88597",
+              "Name": "Turbine status",
+              "StreamId": "Wind.Turbine1.status"
+            },
+            {
+              "Id": "06ab576e-4df5-4b60-8f0e-4e0328c81411",
+              "Name": "Pitch angle",
+              "StreamId": "Wind.Turbine1.Pitch_angle"
+            },
+            {
+              "Id": "a00c99ae-f351-4dd5-84a8-b2b2962f7be9",
+              "Name": "Outdoor temperature",
+              "StreamId": "Wind.Turbine1.Outdoor_temperature"
+            },
+            {
+              "Id": "cea9bff8-cb8e-4e93-8f00-31e0ad43c836",
+              "Name": "Hub temperature",
+              "StreamId": "Wind.Turbine1.Hub_temperature"
+            },
+            {
+              "Id": "b71c3dfb-835f-4702-b83d-d57da4f32884",
+              "Name": "Grid voltage",
+              "StreamId": "Wind.Turbine1.Grid_voltage"
+            },
+            {
+              "Id": "9d9d76a0-555d-4e92-b0fd-5b262adcf441",
+              "Name": "Grid frequency",
+              "StreamId": "Wind.Turbine1.Grid_frequency"
+            },
+            {
+              "Id": "26105b9e-8a0d-4690-9f87-139f444caa1f",
+              "Name": "Gearbox oil sump temp",
+              "StreamId": "Wind.Turbine1.Gearbox_oil_sump_temp"
+            },
+            {
+              "Id": "4c9237eb-1052-4f3f-acb2-c66bcd548f4d",
+              "Name": "Gearbox inlet temp",
+              "StreamId": "Wind.Turbine1.Gearbox_inlet_temp"
+            },
+            {
+              "Id": "95dd7c90-9433-4efe-9937-cacdcd421319",
+              "Name": "Gearbox bearing temp",
+              "StreamId": "Wind.Turbine1.Gearbox_bearing_temp"
+            },
+            {
+              "Id": "838fce9b-9362-4c45-93b0-9f11f4ef0c52",
+              "Name": "Bearing temp",
+              "StreamId": "Wind.Turbine1.bearing_temp"
+            },
+            {
+              "Id": "670f5ab3-132a-42ab-a0fd-b00b099ecb31",
+              "Name": "Amp output",
+              "StreamId": "Wind.Turbine1.amp_output"
+            }
+          ],
+          "CreatedDate": "2025-03-03T22:12:57.122986+00:00",
+          "ModifiedDate": "2025-03-03T22:12:57.122986+00:00"
+        },
+        "StreamReaders": [],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "Wind.Turbine2",
+          "Name": "Wind.Turbine2",
+          "Description": "Real-time turbine and environmental telemetry",
+          "AssetTypeId": "bd7b7760-fdbe-4520-baa7-9b710ec8227b",
+          "Metadata": [
+            {
+              "Id": "32e23ece-c8af-49af-afb7-f901eaf58629",
+              "Name": "Model",
+              "SdsTypeCode": "String",
+              "Value": "74656"
+            },
+            {
+              "Id": "70969638-0dbf-4a86-a89a-b6b3ace6b1cc",
+              "Name": "Author",
+              "SdsTypeCode": "String",
+              "Value": "D. Lopez"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "f9f6189c-7890-48b3-b104-4b867e23c7f9",
+              "Name": "Wind speed",
+              "StreamId": "Wind.Turbine2.wind_speed"
+            },
+            {
+              "Id": "ababfdec-8fba-4d4f-b942-8f99643463cc",
+              "Name": "Wind direction",
+              "StreamId": "Wind.Turbine2.wind_direction"
+            },
+            {
+              "Id": "915c0b33-ddd8-45c1-9ac3-efae1f5c4b8a",
+              "Name": "Vibration",
+              "StreamId": "Wind.Turbine2.vibration"
+            },
+            {
+              "Id": "c725cf6e-550d-4f4e-a484-0178abe316f7",
+              "Name": "Vane position 2",
+              "StreamId": "Wind.Turbine2.Vane_position_2"
+            },
+            {
+              "Id": "838aea95-d1d7-4fb6-b93d-4855ed71e825",
+              "Name": "Vane position 1",
+              "StreamId": "Wind.Turbine2.Vane_position_1"
+            },
+            {
+              "Id": "329ae2b2-7b84-4f67-b8bc-997d270d6a09",
+              "Name": "Turbine speed",
+              "StreamId": "Wind.Turbine2.turbine_speed"
+            },
+            {
+              "Id": "6bc0fca6-e7a1-4fb2-80f6-0f4e50d88597",
+              "Name": "Turbine status",
+              "StreamId": "Wind.Turbine2.status"
+            },
+            {
+              "Id": "06ab576e-4df5-4b60-8f0e-4e0328c81411",
+              "Name": "Pitch angle",
+              "StreamId": "Wind.Turbine2.Pitch_angle"
+            },
+            {
+              "Id": "a00c99ae-f351-4dd5-84a8-b2b2962f7be9",
+              "Name": "Outdoor temperature",
+              "StreamId": "Wind.Turbine2.Outdoor_temperature"
+            },
+            {
+              "Id": "cea9bff8-cb8e-4e93-8f00-31e0ad43c836",
+              "Name": "Hub temperature",
+              "StreamId": "Wind.Turbine2.Hub_temperature"
+            },
+            {
+              "Id": "b71c3dfb-835f-4702-b83d-d57da4f32884",
+              "Name": "Grid voltage",
+              "StreamId": "Wind.Turbine2.Grid_voltage"
+            },
+            {
+              "Id": "9d9d76a0-555d-4e92-b0fd-5b262adcf441",
+              "Name": "Grid frequency",
+              "StreamId": "Wind.Turbine2.Grid_frequency"
+            },
+            {
+              "Id": "26105b9e-8a0d-4690-9f87-139f444caa1f",
+              "Name": "Gearbox oil sump temp",
+              "StreamId": "Wind.Turbine2.Gearbox_oil_sump_temp"
+            },
+            {
+              "Id": "4c9237eb-1052-4f3f-acb2-c66bcd548f4d",
+              "Name": "Gearbox inlet temp",
+              "StreamId": "Wind.Turbine2.Gearbox_inlet_temp"
+            },
+            {
+              "Id": "95dd7c90-9433-4efe-9937-cacdcd421319",
+              "Name": "Gearbox bearing temp",
+              "StreamId": "Wind.Turbine2.Gearbox_bearing_temp"
+            },
+            {
+              "Id": "838fce9b-9362-4c45-93b0-9f11f4ef0c52",
+              "Name": "Bearing temp",
+              "StreamId": "Wind.Turbine2.bearing_temp"
+            },
+            {
+              "Id": "670f5ab3-132a-42ab-a0fd-b00b099ecb31",
+              "Name": "Amp output",
+              "StreamId": "Wind.Turbine2.amp_output"
+            }
+          ],
+          "CreatedDate": "2025-03-03T22:12:57.136947+00:00",
+          "ModifiedDate": "2025-03-03T22:12:57.136947+00:00"
+        },
+        "StreamReaders": [],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "Wind.Turbine3",
+          "Name": "Wind.Turbine3",
+          "Description": "Real-time turbine and environmental telemetry",
+          "AssetTypeId": "bd7b7760-fdbe-4520-baa7-9b710ec8227b",
+          "Metadata": [
+            {
+              "Id": "32e23ece-c8af-49af-afb7-f901eaf58629",
+              "Name": "Model",
+              "SdsTypeCode": "String",
+              "Value": "74656"
+            },
+            {
+              "Id": "70969638-0dbf-4a86-a89a-b6b3ace6b1cc",
+              "Name": "Author",
+              "SdsTypeCode": "String",
+              "Value": "D. Lopez"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "f9f6189c-7890-48b3-b104-4b867e23c7f9",
+              "Name": "Wind speed",
+              "StreamId": "Wind.Turbine3.wind_speed"
+            },
+            {
+              "Id": "ababfdec-8fba-4d4f-b942-8f99643463cc",
+              "Name": "Wind direction",
+              "StreamId": "Wind.Turbine3.wind_direction"
+            },
+            {
+              "Id": "915c0b33-ddd8-45c1-9ac3-efae1f5c4b8a",
+              "Name": "Vibration",
+              "StreamId": "Wind.Turbine3.vibration"
+            },
+            {
+              "Id": "c725cf6e-550d-4f4e-a484-0178abe316f7",
+              "Name": "Vane position 2",
+              "StreamId": "Wind.Turbine3.Vane_position_2"
+            },
+            {
+              "Id": "838aea95-d1d7-4fb6-b93d-4855ed71e825",
+              "Name": "Vane position 1",
+              "StreamId": "Wind.Turbine3.Vane_position_1"
+            },
+            {
+              "Id": "329ae2b2-7b84-4f67-b8bc-997d270d6a09",
+              "Name": "Turbine speed",
+              "StreamId": "Wind.Turbine3.turbine_speed"
+            },
+            {
+              "Id": "6bc0fca6-e7a1-4fb2-80f6-0f4e50d88597",
+              "Name": "Turbine status",
+              "StreamId": "Wind.Turbine3.status"
+            },
+            {
+              "Id": "06ab576e-4df5-4b60-8f0e-4e0328c81411",
+              "Name": "Pitch angle",
+              "StreamId": "Wind.Turbine3.Pitch_angle"
+            },
+            {
+              "Id": "a00c99ae-f351-4dd5-84a8-b2b2962f7be9",
+              "Name": "Outdoor temperature",
+              "StreamId": "Wind.Turbine3.Outdoor_temperature"
+            },
+            {
+              "Id": "cea9bff8-cb8e-4e93-8f00-31e0ad43c836",
+              "Name": "Hub temperature",
+              "StreamId": "Wind.Turbine3.Hub_temperature"
+            },
+            {
+              "Id": "b71c3dfb-835f-4702-b83d-d57da4f32884",
+              "Name": "Grid voltage",
+              "StreamId": "Wind.Turbine3.Grid_voltage"
+            },
+            {
+              "Id": "9d9d76a0-555d-4e92-b0fd-5b262adcf441",
+              "Name": "Grid frequency",
+              "StreamId": "Wind.Turbine3.Grid_frequency"
+            },
+            {
+              "Id": "26105b9e-8a0d-4690-9f87-139f444caa1f",
+              "Name": "Gearbox oil sump temp",
+              "StreamId": "Wind.Turbine3.Gearbox_oil_sump_temp"
+            },
+            {
+              "Id": "4c9237eb-1052-4f3f-acb2-c66bcd548f4d",
+              "Name": "Gearbox inlet temp",
+              "StreamId": "Wind.Turbine3.Gearbox_inlet_temp"
+            },
+            {
+              "Id": "95dd7c90-9433-4efe-9937-cacdcd421319",
+              "Name": "Gearbox bearing temp",
+              "StreamId": "Wind.Turbine3.Gearbox_bearing_temp"
+            },
+            {
+              "Id": "838fce9b-9362-4c45-93b0-9f11f4ef0c52",
+              "Name": "Bearing temp",
+              "StreamId": "Wind.Turbine3.bearing_temp"
+            },
+            {
+              "Id": "670f5ab3-132a-42ab-a0fd-b00b099ecb31",
+              "Name": "Amp output",
+              "StreamId": "Wind.Turbine3.amp_output"
+            }
+          ],
+          "CreatedDate": "2025-03-03T22:12:57.102429+00:00",
+          "ModifiedDate": "2025-03-03T22:12:57.102429+00:00"
+        },
+        "StreamReaders": [],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      },
+      {
+        "Asset": {
+          "Id": "Wind.Turbine4",
+          "Name": "Wind.Turbine4",
+          "Description": "Real-time turbine and environmental telemetry",
+          "AssetTypeId": "bd7b7760-fdbe-4520-baa7-9b710ec8227b",
+          "Metadata": [
+            {
+              "Id": "32e23ece-c8af-49af-afb7-f901eaf58629",
+              "Name": "Model",
+              "SdsTypeCode": "String",
+              "Value": "74656"
+            },
+            {
+              "Id": "70969638-0dbf-4a86-a89a-b6b3ace6b1cc",
+              "Name": "Author",
+              "SdsTypeCode": "String",
+              "Value": "D. Lopez"
+            }
+          ],
+          "StreamReferences": [
+            {
+              "Id": "f9f6189c-7890-48b3-b104-4b867e23c7f9",
+              "Name": "Wind speed",
+              "StreamId": "Wind.Turbine4.wind_speed"
+            },
+            {
+              "Id": "ababfdec-8fba-4d4f-b942-8f99643463cc",
+              "Name": "Wind direction",
+              "StreamId": "Wind.Turbine4.wind_direction"
+            },
+            {
+              "Id": "915c0b33-ddd8-45c1-9ac3-efae1f5c4b8a",
+              "Name": "Vibration",
+              "StreamId": "Wind.Turbine4.vibration"
+            },
+            {
+              "Id": "c725cf6e-550d-4f4e-a484-0178abe316f7",
+              "Name": "Vane position 2",
+              "StreamId": "Wind.Turbine4.Vane_position_2"
+            },
+            {
+              "Id": "838aea95-d1d7-4fb6-b93d-4855ed71e825",
+              "Name": "Vane position 1",
+              "StreamId": "Wind.Turbine4.Vane_position_1"
+            },
+            {
+              "Id": "329ae2b2-7b84-4f67-b8bc-997d270d6a09",
+              "Name": "Turbine speed",
+              "StreamId": "Wind.Turbine4.turbine_speed"
+            },
+            {
+              "Id": "6bc0fca6-e7a1-4fb2-80f6-0f4e50d88597",
+              "Name": "Turbine status",
+              "StreamId": "Wind.Turbine4.status"
+            },
+            {
+              "Id": "06ab576e-4df5-4b60-8f0e-4e0328c81411",
+              "Name": "Pitch angle",
+              "StreamId": "Wind.Turbine4.Pitch_angle"
+            },
+            {
+              "Id": "a00c99ae-f351-4dd5-84a8-b2b2962f7be9",
+              "Name": "Outdoor temperature",
+              "StreamId": "Wind.Turbine4.Outdoor_temperature"
+            },
+            {
+              "Id": "cea9bff8-cb8e-4e93-8f00-31e0ad43c836",
+              "Name": "Hub temperature",
+              "StreamId": "Wind.Turbine4.Hub_temperature"
+            },
+            {
+              "Id": "b71c3dfb-835f-4702-b83d-d57da4f32884",
+              "Name": "Grid voltage",
+              "StreamId": "Wind.Turbine4.Grid_voltage"
+            },
+            {
+              "Id": "9d9d76a0-555d-4e92-b0fd-5b262adcf441",
+              "Name": "Grid frequency",
+              "StreamId": "Wind.Turbine4.Grid_frequency"
+            },
+            {
+              "Id": "26105b9e-8a0d-4690-9f87-139f444caa1f",
+              "Name": "Gearbox oil sump temp",
+              "StreamId": "Wind.Turbine4.Gearbox_oil_sump_temp"
+            },
+            {
+              "Id": "4c9237eb-1052-4f3f-acb2-c66bcd548f4d",
+              "Name": "Gearbox inlet temp",
+              "StreamId": "Wind.Turbine4.Gearbox_inlet_temp"
+            },
+            {
+              "Id": "95dd7c90-9433-4efe-9937-cacdcd421319",
+              "Name": "Gearbox bearing temp",
+              "StreamId": "Wind.Turbine4.Gearbox_bearing_temp"
+            },
+            {
+              "Id": "838fce9b-9362-4c45-93b0-9f11f4ef0c52",
+              "Name": "Bearing temp",
+              "StreamId": "Wind.Turbine4.bearing_temp"
+            },
+            {
+              "Id": "670f5ab3-132a-42ab-a0fd-b00b099ecb31",
+              "Name": "Amp output",
+              "StreamId": "Wind.Turbine4.amp_output"
+            }
+          ],
+          "CreatedDate": "2025-03-03T22:12:57.136999+00:00",
+          "ModifiedDate": "2025-03-03T22:12:57.136999+00:00"
+        },
+        "StreamReaders": [],
+        "EventReaders": [],
+        "ReferenceDataReaders": [],
+        "Children": []
+      }
+    ]
+  }
+}
