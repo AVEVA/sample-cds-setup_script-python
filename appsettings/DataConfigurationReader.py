@@ -17,6 +17,6 @@ def readDataConfiguration(path: str) -> DataConfiguration:
         ) as f:
             return DataConfiguration.fromJson(json.load(f))
     except Exception as error:
-        logging.ERROR(f'Error: {str(error)}')
-        logging.ERROR(f'Could not open/read data_configuration.json')
+        logging.error(f'Error: {str(error)}')
+        logging.error(f'Could not open/read data_configuration.json')
         exit()
