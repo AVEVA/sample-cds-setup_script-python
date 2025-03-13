@@ -61,38 +61,36 @@ class CSVStreamReader(BackfillableStreamReader):
         return self.__omf_type
 
     def __get_values(
-        self, stream_data_iterator: CSVIterator, start_time: datetime, end_time: datetime
+        self, stream_data_iterator: CSVIterator, end_time: datetime
     ) -> Iterator[OMFData]:
-        last_time = start_time
+        last_time = stream_data_iterator.current_value_time
         while end_time > last_time:
-            next_row = next(stream_data_iterator, None)
-            current_value = self.__data_class(**next_row)
-            last_time = getattr(current_value, self.__index_property)
+            next(stream_data_iterator, None)
+            current_value = self.__data_class(**stream_data_iterator.previous_row)
+            last_time = stream_data_iterator.current_value_time
 
             yield OMFData[self.__data_class]([current_value], ContainerId=self.id)
 
     def read_streaming_data(self, now: datetime) -> Iterator[OMFData]:
         # trim subseconds off of input datetimes for clarity
-        now = now.replace(microsecond=0)
+        #now = now.replace(microsecond=0)
         
         # if no current value time then the iterator has never been iterated, so we need to seek to appropriate starting point
         if not self.__streaming_data_iterator.current_value_time:
-            current_value_time = self.__streaming_data_iterator.seek_to_first_event_prior_to(now)
-        else:
-            current_value_time = self.__streaming_data_iterator.current_value_time
+            self.__streaming_data_iterator.seek_to_first_event_prior_to(now)
 
-        for value in self.__get_values(self.__streaming_data_iterator, current_value_time, now):
+        for value in self.__get_values(self.__streaming_data_iterator, now):
             for observer in self.observers:
                 observer(value)
             yield value
 
     def read_backfill_data(self, start_time: datetime, end_time: datetime) -> Iterator[OMFData]:
         # trim subseconds off of input datetimes for clarity
-        start_time = start_time.replace(microsecond=0)
-        end_time = end_time.replace(microsecond=0)
-        current_value_time = self.__backfill_data_iterator.seek_to_first_event_prior_to(start_time)
+        #start_time = start_time.replace(microsecond=0)
+        #end_time = end_time.replace(microsecond=0)
+        self.__backfill_data_iterator.seek_to_first_event_prior_to(start_time)
 
-        for value in self.__get_values(self.__backfill_data_iterator, current_value_time, end_time):
+        for value in self.__get_values(self.__backfill_data_iterator, end_time):
             for observer in self.observers:
                 observer(value)
             yield value

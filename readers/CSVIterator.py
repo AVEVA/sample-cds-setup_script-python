@@ -29,6 +29,8 @@ class CSVIterator:
         self.__file_data_end = file_data_end
         self.__file_data_number_of_rows = file_data_number_of_rows
         self.__current_row = None
+        self.__previous_row = None
+
         # cache settings and state
         self.__cache = []
         self.__cache_index = 0
@@ -53,7 +55,11 @@ class CSVIterator:
     
     def get_file_data_number_of_rows(self):
         return self.__file_data_number_of_rows
-          
+
+    @property
+    def previous_row(self):
+        return self.__previous_row if self.__previous_row is not None else None
+
     @property
     def current_value_time(self):
         return self.__current_row.get(self.__index_field) if self.__current_row is not None else None
@@ -94,7 +100,11 @@ class CSVIterator:
             row_copy = self.__apply_time_offset_to_datetime_fields(row)
 
             self.__cache_index += 1
+
+            if (self.__current_row is not None):
+                self.__previous_row = self.__current_row
             self.__current_row = row_copy
+            
             return row_copy
         else:
             raise StopIteration
@@ -117,6 +127,11 @@ class CSVIterator:
                 
                 last_row, _ = self.__transformer.transform_row(row)
                 self.__file_data_end = last_row.get(self.__index_field)
+
+            # TODO: Verify the input data file has at a minimum 2 rows
+            # Two rows would indicate that the value of the first row is to be 
+            # repeated at the frequency defined by the difference between the two
+            # rows timestamps
 
             return self.__file_data_end, self.__file_data_number_of_rows
                
@@ -149,7 +164,6 @@ class CSVIterator:
             data_file_target_index = self.__file_data_number_of_rows - 1
             start_time = start_time - last_two_rows_time_difference
             data_file_time_offset_to_target = data_file_time_offset_to_target - last_two_rows_time_difference
-            
         else:
             # iterate until we pass the target time offset, and remember the index immediately before
             while (current_timestamp - data_file_first_event_timestamp) < target_time_offset_in_data_file:
