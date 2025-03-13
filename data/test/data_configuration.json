@@ -333,23 +333,8 @@
       "Name": "Random1",
       "DataClass": "StreamTypeTimeIndexedDouble",
       "Interval": 5.0
-    },    
-        {                
-          "Reader": "CSVStreamReader",
-          "Id": "Counts",
-          "Name": "Counts",
-          "FilePath": "data/test/stream/Counts.csv",
-          "DataClass": "StreamTypeCounts"
-        },    
-        {                
-          "Reader": "CSVStreamReader",
-          "Id": "Counts2",
-          "Name": "Counts2",
-          "FilePath": "data/test/stream/Counts2.csv",
-          "DataClass": "StreamTypeCounts"
-        }
-      ]
-  ,
+    }
+  ],
   "SoloEventReaders": [],
   "SoloReferenceDataReaders": []
 }
