@@ -102,21 +102,13 @@ class CSVEventReader(BackfillableEventReader, Generic[T]):
                         StartTime=event.StartTime)
 
     def read_streaming_events(self, now: datetime) -> Iterator[GraphData[T]]:
-        # trim subseconds off of input datetimes for clarity
-        now = now.replace(microsecond=0)
         if not self.__streaming_event_iterator.current_value_time:
             self.__streaming_event_iterator.seek_to_first_event_prior_to(now)
 
         for value in self.__get_events(self.__streaming_event_iterator, now):
             yield GraphData([value], self.__event_type.Id)
 
-    def read_backfill_events(
-        self, start_time: datetime, end_time: datetime
-    ) -> Iterator[GraphData[T]]:
-        # trim subseconds off of input datetimes for clarity
-        start_time = start_time.replace(microsecond=0)
-        end_time = end_time.replace(microsecond=0)
-
+    def read_backfill_events(self, start_time: datetime, end_time: datetime) -> Iterator[GraphData[T]]:
         self.__backfill_event_iterator.seek_to_first_event_prior_to(start_time)
         for value in self.__get_events(self.__backfill_event_iterator, end_time):
             yield GraphData([value], self.__event_type.Id)
