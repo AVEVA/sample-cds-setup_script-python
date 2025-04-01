@@ -1,4 +1,12 @@
 {
+  "AssetTypes" :[],
+  "Hierarchy": {
+    "Asset": {},
+    "StreamReaders": [],
+    "EventReaders": [],
+    "ReferenceDataReaders": [],
+    "Children": []
+  },
   "SoloStreamReaders": [
     {
       "Reader": "CSVStreamReader",
@@ -480,5 +488,7 @@
       "DataClass": "StreamTypePIDigital",
       "Type": "PIDigital"
     }
-  ]
+  ],
+  "SoloEventReaders": [],
+  "SoloReferenceDataReaders": []
 }
