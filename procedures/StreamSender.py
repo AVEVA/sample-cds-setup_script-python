@@ -55,6 +55,9 @@ def __backfill_stream_data(
 
                 while len(queue) >= max_events:
                     _send(omf_clients, queue, max_events, event_rate_counter)
+    
+    # flush any leftover events
+    _send(omf_clients, queue, max_events, event_rate_counter)
 
 def __stream_stream_data(
     omf_clients: ADHOMFClients, 
