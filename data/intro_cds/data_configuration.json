@@ -1,0 +1,494 @@
+{
+  "AssetTypes" :[],
+  "Hierarchy": {
+    "Asset": {},
+    "StreamReaders": [],
+    "EventReaders": [],
+    "ReferenceDataReaders": [],
+    "Children": []
+  },
+  "SoloStreamReaders": [
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE01.Active Power - 10 min rolling avg.4cda6eb5-885a-5fd4-323f-add6141de672",
+      "Id": "PI_server.windtopia.ext_136690",
+      "FilePath": "data/intro_cds/stream/GE01_PI_server.windtopia.ext_136690.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE01.Expected Power - 10 min rolling avg.ab4061ca-2be9-5ec0-26b8-58f87a592d79",
+      "Id": "PI_server.windtopia.ext_142258",
+      "FilePath": "data/intro_cds/stream/GE01_PI_server.windtopia.ext_142258.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE01.Wind Speed - 10 min rolling avg.54fac36c-3c73-53f8-3ecb-2ebfb6f36d5b",
+      "Id": "PI_server.windtopia.ext_136688",
+      "FilePath": "data/intro_cds/stream/GE01_PI_server.windtopia.ext_136688.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE01.Energy Production - Daily.aea5f837-4e97-5f9a-39ac-14b7be240866",
+      "Id": "PI_server.windtopia.ext_142468",
+      "FilePath": "data/intro_cds/stream/GE01_PI_server.windtopia.ext_142468.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE01.Apparent Power - 10 min rolling avg.ccca0088-0600-5a6b-1733-856de94b33e5",
+      "Id": "PI_server.windtopia.ext_142228",
+      "FilePath": "data/intro_cds/stream/GE01_PI_server.windtopia.ext_142228.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE02.Active Power - 10 min rolling avg.4cda6eb0-885a-5fd4-323f-add6141de672",
+      "Id": "PI_server.windtopia.ext_136609",
+      "FilePath": "data/intro_cds/stream/GE02_PI_server.windtopia.ext_136609.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE02.Apparent Power - 10 min rolling avg.ccca0095-0600-5a6b-1733-856de94b33e5",
+      "Id": "PI_server.windtopia.ext_142229",
+      "FilePath": "data/intro_cds/stream/GE02_PI_server.windtopia.ext_142229.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE02.Expected Power - 10 min rolling avg.ab4061d7-2be9-5ec0-26b8-58f87a592d79",
+      "Id": "PI_server.windtopia.ext_142249",
+      "FilePath": "data/intro_cds/stream/GE02_PI_server.windtopia.ext_142249.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE02.Wind Speed - 10 min rolling avg.54fac369-3c73-53f8-3ecb-2ebfb6f36d5b",
+      "Id": "PI_server.windtopia.ext_136682",
+      "FilePath": "data/intro_cds/stream/GE02_PI_server.windtopia.ext_136682.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE02.Energy Production - Daily.aea5f82a-4e97-5f9a-39ac-14b7be240866",
+      "Id": "PI_server.windtopia.ext_142483",
+      "FilePath": "data/intro_cds/stream/GE02_PI_server.windtopia.ext_142483.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE03.Active Power - 10 min rolling avg.4cda6eb3-885a-5fd4-323f-add6141de672",
+      "Id": "PI_server.windtopia.ext_136611",
+      "FilePath": "data/intro_cds/stream/GE03_PI_server.windtopia.ext_136611.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE03.Apparent Power - 10 min rolling avg.ccca00a0-0600-5a6b-1733-856de94b33e5",
+      "Id": "PI_server.windtopia.ext_142230",
+      "FilePath": "data/intro_cds/stream/GE03_PI_server.windtopia.ext_142230.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE03.Energy Production - Daily.aea5f81f-4e97-5f9a-39ac-14b7be240866",
+      "Id": "PI_server.windtopia.ext_142489",
+      "FilePath": "data/intro_cds/stream/GE03_PI_server.windtopia.ext_142489.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE03.Expected Power - 10 min rolling avg.ab4061e2-2be9-5ec0-26b8-58f87a592d79",
+      "Id": "PI_server.windtopia.ext_142257",
+      "FilePath": "data/intro_cds/stream/GE03_PI_server.windtopia.ext_142257.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE03.Wind Speed - 10 min rolling avg.54fac36a-3c73-53f8-3ecb-2ebfb6f36d5b",
+      "Id": "PI_server.windtopia.ext_136684",
+      "FilePath": "data/intro_cds/stream/GE03_PI_server.windtopia.ext_136684.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE04.Active Power - 10 min rolling avg.4cda914e-885a-5fd4-323f-add6141de672",
+      "Id": "PI_server.windtopia.ext_136543",
+      "FilePath": "data/intro_cds/stream/GE04_PI_server.windtopia.ext_136543.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE04.Apparent Power - 10 min rolling avg.ccca00ac-0600-5a6b-1733-856de94b33e5",
+      "Id": "PI_server.windtopia.ext_142231",
+      "FilePath": "data/intro_cds/stream/GE04_PI_server.windtopia.ext_142231.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE04.Expected Power - 10 min rolling avg.ab4061ee-2be9-5ec0-26b8-58f87a592d79",
+      "Id": "PI_server.windtopia.ext_142256",
+      "FilePath": "data/intro_cds/stream/GE04_PI_server.windtopia.ext_142256.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE04.Wind Speed - 10 min rolling avg.54fa3c97-3c73-53f8-3ecb-2ebfb6f36d5b",
+      "Id": "PI_server.windtopia.ext_136616",
+      "FilePath": "data/intro_cds/stream/GE04_PI_server.windtopia.ext_136616.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE04.Energy Production - Daily.aea5f813-4e97-5f9a-39ac-14b7be240866",
+      "Id": "PI_server.windtopia.ext_142493",
+      "FilePath": "data/intro_cds/stream/GE04_PI_server.windtopia.ext_142493.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE05.Active Power - 10 min rolling avg.4cda9149-885a-5fd4-323f-add6141de672",
+      "Id": "PI_server.windtopia.ext_136545",
+      "FilePath": "data/intro_cds/stream/GE05_PI_server.windtopia.ext_136545.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE05.Apparent Power - 10 min rolling avg.2511acc1-0607-5a6b-1733-856de94b33e5",
+      "Id": "PI_server.windtopia.ext_142232",
+      "FilePath": "data/intro_cds/stream/GE05_PI_server.windtopia.ext_142232.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE05.Expected Power - 10 min rolling avg.429bcd83-2bee-5ec0-26b8-58f87a592d79",
+      "Id": "PI_server.windtopia.ext_142250",
+      "FilePath": "data/intro_cds/stream/GE05_PI_server.windtopia.ext_142250.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE05.Energy Production - Daily.477e547e-4e90-5f9a-39ac-14b7be240866",
+      "Id": "PI_server.windtopia.ext_142498",
+      "FilePath": "data/intro_cds/stream/GE05_PI_server.windtopia.ext_142498.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE05.Wind Speed - 10 min rolling avg.54fa3c90-3c73-53f8-3ecb-2ebfb6f36d5b",
+      "Id": "PI_server.windtopia.ext_136618",
+      "FilePath": "data/intro_cds/stream/GE05_PI_server.windtopia.ext_136618.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE06.Active Power - 10 min rolling avg.4cda9144-885a-5fd4-323f-add6141de672",
+      "Id": "PI_server.windtopia.ext_136546",
+      "FilePath": "data/intro_cds/stream/GE06_PI_server.windtopia.ext_136546.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE06.Apparent Power - 10 min rolling avg.2511accc-0607-5a6b-1733-856de94b33e5",
+      "Id": "PI_server.windtopia.ext_142233",
+      "FilePath": "data/intro_cds/stream/GE06_PI_server.windtopia.ext_142233.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE06.Energy Production - Daily.477e5473-4e90-5f9a-39ac-14b7be240866",
+      "Id": "PI_server.windtopia.ext_142503",
+      "FilePath": "data/intro_cds/stream/GE06_PI_server.windtopia.ext_142503.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE06.Expected Power - 10 min rolling avg.429bcd8e-2bee-5ec0-26b8-58f87a592d79",
+      "Id": "PI_server.windtopia.ext_142255",
+      "FilePath": "data/intro_cds/stream/GE06_PI_server.windtopia.ext_142255.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE06.Wind Speed - 10 min rolling avg.54fa3c9d-3c73-53f8-3ecb-2ebfb6f36d5b",
+      "Id": "PI_server.windtopia.ext_136619",
+      "FilePath": "data/intro_cds/stream/GE06_PI_server.windtopia.ext_136619.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE07.Active Power - 10 min rolling avg.4cda9147-885a-5fd4-323f-add6141de672",
+      "Id": "PI_server.windtopia.ext_136691",
+      "FilePath": "data/intro_cds/stream/GE07_PI_server.windtopia.ext_136691.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE07.Apparent Power - 10 min rolling avg.1a3464bc-0607-5a6b-1733-856de94b33e5",
+      "Id": "PI_server.windtopia.ext_142234",
+      "FilePath": "data/intro_cds/stream/GE07_PI_server.windtopia.ext_142234.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE07.Energy Production - Daily.785b9c03-4e90-5f9a-39ac-14b7be240866",
+      "Id": "PI_server.windtopia.ext_142508",
+      "FilePath": "data/intro_cds/stream/GE07_PI_server.windtopia.ext_142508.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE07.Expected Power - 10 min rolling avg.7dbe05fe-2bee-5ec0-26b8-58f87a592d79",
+      "Id": "PI_server.windtopia.ext_142254",
+      "FilePath": "data/intro_cds/stream/GE07_PI_server.windtopia.ext_142254.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE07.Wind Speed - 10 min rolling avg.54fa3c9e-3c73-53f8-3ecb-2ebfb6f36d5b",
+      "Id": "PI_server.windtopia.ext_136689",
+      "FilePath": "data/intro_cds/stream/GE07_PI_server.windtopia.ext_136689.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE08.Active Power - 10 min rolling avg.08221e97-cb39-5fd5-30f9-9592357dfe8d",
+      "Id": "PI_server.windtopia.ext_136614",
+      "FilePath": "data/intro_cds/stream/GE08_PI_server.windtopia.ext_136614.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE08.Apparent Power - 10 min rolling avg.1a34654b-0607-5a6b-1733-856de94b33e5",
+      "Id": "PI_server.windtopia.ext_142235",
+      "FilePath": "data/intro_cds/stream/GE08_PI_server.windtopia.ext_142235.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE08.Energy Production - Daily.785b9df4-4e90-5f9a-39ac-14b7be240866",
+      "Id": "PI_server.windtopia.ext_142513",
+      "FilePath": "data/intro_cds/stream/GE08_PI_server.windtopia.ext_142513.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE08.Wind Speed - 10 min rolling avg.1002b34e-7f10-53f9-3c0d-16fb979375a4",
+      "Id": "PI_server.windtopia.ext_136687",
+      "FilePath": "data/intro_cds/stream/GE08_PI_server.windtopia.ext_136687.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE08.Expected Power 10m Avg.7dbe0409-2bee-5ec0-26b8-58f87a592d79",
+      "Id": "PI_server.windtopia.ext_142220",
+      "FilePath": "data/intro_cds/stream/GE08_PI_server.windtopia.ext_142220.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE09.Active Power - 10 min rolling avg.0d17ca71-ae52-5fd5-3261-add6141de672",
+      "Id": "PI_server.windtopia.ext_136612",
+      "FilePath": "data/intro_cds/stream/GE09_PI_server.windtopia.ext_136612.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE09.Apparent Power - 10 min rolling avg.1057e92f-0607-5a6b-1733-856de94b33e5",
+      "Id": "PI_server.windtopia.ext_142236",
+      "FilePath": "data/intro_cds/stream/GE09_PI_server.windtopia.ext_142236.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE09.Energy Production - Daily.72381190-4e90-5f9a-39ac-14b7be240866",
+      "Id": "PI_server.windtopia.ext_142518",
+      "FilePath": "data/intro_cds/stream/GE09_PI_server.windtopia.ext_142518.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE09.Expected Power 10m Avg.77dd886d-2bee-5ec0-26b8-58f87a592d79",
+      "Id": "PI_server.windtopia.ext_142219",
+      "FilePath": "data/intro_cds/stream/GE09_PI_server.windtopia.ext_142219.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE09.Wind Speed - 10 min rolling avg.153767a8-1a7b-53f9-3e95-2ebfb6f36d5b",
+      "Id": "PI_server.windtopia.ext_136685",
+      "FilePath": "data/intro_cds/stream/GE09_PI_server.windtopia.ext_136685.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE10.Active Power - 10 min rolling avg.30301868-d4ed-5fd6-2968-8d8c8b760041",
+      "Id": "PI_server.windtopia.ext_136613",
+      "FilePath": "data/intro_cds/stream/GE10_PI_server.windtopia.ext_136613.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE10.Apparent Power - 10 min rolling avg.1057e93a-0607-5a6b-1733-856de94b33e5",
+      "Id": "PI_server.windtopia.ext_142237",
+      "FilePath": "data/intro_cds/stream/GE10_PI_server.windtopia.ext_142237.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE10.Energy Production - Daily.72381185-4e90-5f9a-39ac-14b7be240866",
+      "Id": "PI_server.windtopia.ext_142523",
+      "FilePath": "data/intro_cds/stream/GE10_PI_server.windtopia.ext_142523.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE10.Expected Power 10m Avg.77dd8878-2bee-5ec0-26b8-58f87a592d79",
+      "Id": "PI_server.windtopia.ext_142218",
+      "FilePath": "data/intro_cds/stream/GE10_PI_server.windtopia.ext_142218.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE10.Wind Speed - 10 min rolling avg.2810b5b1-60c4-53fa-259c-0ee529988b68",
+      "Id": "PI_server.windtopia.ext_136686",
+      "FilePath": "data/intro_cds/stream/GE10_PI_server.windtopia.ext_136686.csv",
+      "DataClass": "StreamTypePIFloat64",
+      "Type": "PIFloat64"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE01_OS",
+      "Id": "PI_server.windtopia.ext_32240",
+      "FilePath": "data/intro_cds/stream/GE01_PI_server.windtopia.ext_32240.csv",
+      "DataClass": "StreamTypePIDigital",
+      "Type": "PIDigital"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE02_OS",
+      "Id": "PI_server.windtopia.ext_32244",
+      "FilePath": "data/intro_cds/stream/GE02_PI_server.windtopia.ext_32244.csv",
+      "DataClass": "StreamTypePIDigital",
+      "Type": "PIDigital"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE03_OS",
+      "Id": "PI_server.windtopia.ext_32248",
+      "FilePath": "data/intro_cds/stream/GE03_PI_server.windtopia.ext_32248.csv",
+      "DataClass": "StreamTypePIDigital",
+      "Type": "PIDigital"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE04_OS",
+      "Id": "PI_server.windtopia.ext_32251",
+      "FilePath": "data/intro_cds/stream/GE04_PI_server.windtopia.ext_32251.csv",
+      "DataClass": "StreamTypePIDigital",
+      "Type": "PIDigital"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE05_OS",
+      "Id": "PI_server.windtopia.ext_32254",
+      "FilePath": "data/intro_cds/stream/GE05_PI_server.windtopia.ext_32254.csv",
+      "DataClass": "StreamTypePIDigital",
+      "Type": "PIDigital"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE06_OS",
+      "Id": "PI_server.windtopia.ext_32257",
+      "FilePath": "data/intro_cds/stream/GE06_PI_server.windtopia.ext_32257.csv",
+      "DataClass": "StreamTypePIDigital",
+      "Type": "PIDigital"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE07_OS",
+      "Id": "PI_server.windtopia.ext_32260",
+      "FilePath": "data/intro_cds/stream/GE07_PI_server.windtopia.ext_32260.csv",
+      "DataClass": "StreamTypePIDigital",
+      "Type": "PIDigital"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE08_OS",
+      "Id": "PI_server.windtopia.ext_32263",
+      "FilePath": "data/intro_cds/stream/GE08_PI_server.windtopia.ext_32263.csv",
+      "DataClass": "StreamTypePIDigital",
+      "Type": "PIDigital"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE09_OS",
+      "Id": "PI_server.windtopia.ext_32266",
+      "FilePath": "data/intro_cds/stream/GE09_PI_server.windtopia.ext_32266.csv",
+      "DataClass": "StreamTypePIDigital",
+      "Type": "PIDigital"
+    },
+    {
+      "Reader": "CSVStreamReader",
+      "Name": "GE10_OS",
+      "Id": "PI_server.windtopia.ext_32269",
+      "FilePath": "data/intro_cds/stream/GE10_PI_server.windtopia.ext_32269.csv",
+      "DataClass": "StreamTypePIDigital",
+      "Type": "PIDigital"
+    }
+  ],
+  "SoloEventReaders": [],
+  "SoloReferenceDataReaders": []
+}
